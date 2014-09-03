@@ -574,6 +574,7 @@ End Sub
     End Sub
 
     Private Sub lblEQText_Click(sender As Object, e As EventArgs) Handles lblEQText.Click
+        'Test for commit
         tmrDisplay.Enabled = False
         Me.Opacity = 0
         Me.TopMost = False
