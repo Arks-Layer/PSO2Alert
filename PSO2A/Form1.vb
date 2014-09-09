@@ -1,11 +1,9 @@
 ﻿
 Imports System.IO
 Imports System.Net
-Imports LinqToTwitter
 Imports System.Text.RegularExpressions
 
 Public Class Form1
-    Public twitterctx As TwitterContext
     Public ProgramEnabled As Boolean
     Public LoggingEnabled As Boolean = False
     Public DisplayMonitor As Integer = 1
@@ -1040,83 +1038,6 @@ SELECTFILE:
     '        ToolStripMenuItem1.Visible = True
     'End Sub
 
-    Private Sub tsmReportFireSwirl_Click(sender As Object, e As EventArgs) Handles tsmReportFireSwirl.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " fire")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportCaves_Click(sender As Object, e As EventArgs) Handles tsmReportCaves.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " caves")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportTunnels_Click(sender As Object, e As EventArgs) Handles tsmReportTunnels.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " tunnels")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportCity_Click(sender As Object, e As EventArgs) Handles tsmReportCity.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " city")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportCoast_Click(sender As Object, e As EventArgs) Handles tsmReportCoast.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " coast")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportDarkFalz_Click(sender As Object, e As EventArgs) Handles tsmReportDarkFalz.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " falz")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportDesert_Click(sender As Object, e As EventArgs) Handles tsmReportDesert.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " desert")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportSuperFalz_Click(sender As Object, e As EventArgs) Handles tsmReportSuperFalz.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " elder")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportFloatingContinent_Click(sender As Object, e As EventArgs) Handles tsmReportFloatingContinent.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " chrome")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportForest_Click(sender As Object, e As EventArgs) Handles tsmReportForest.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " forest")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportGeneral_Click(sender As Object, e As EventArgs) Handles tsmReportGeneral.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " general")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmTesting_Click(sender As Object, e As EventArgs) Handles tsmTesting.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " impossibru")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
-
-    Private Sub tsmReportWithWindAndRain_Click(sender As Object, e As EventArgs) Handles tsmReportWithWindAndRain.Click
-        Dim tweet = twitterctx.UpdateStatus("#pso2eq " & LCase(LoadSetting("ShipToQuery")) & " rain")
-        Threading.Thread.Sleep(5000)
-        twitterctx.DestroyStatus(tweet.StatusID)
-    End Sub
 
     'Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
     ' Dim typeofEQ As String = InputBox("Which type of EQ is it? (fire, amduscia, urban, vopar, falz, lilipa, naberius, superfalz, allplanets)")
