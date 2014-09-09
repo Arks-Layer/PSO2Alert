@@ -130,6 +130,7 @@ Partial Class Form1
         'tsmSelectEQs
         '
         Me.tsmSelectEQs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArksShipFireSwirlToolStripMenuItem, Me.BraveBorderBreakToolStripMenuItem, Me.CavesToolStripMenuItem, Me.CoastToolStripMenuItem, Me.CradleOfDarknessToolStripMenuItem, Me.DarkFalzToolStripMenuItem, Me.DesertToolStripMenuItem, Me.FloatingContinentToolStripMenuItem, Me.ForestToolStripMenuItem, Me.InterruptRankingsToolStripMenuItem, Me.MerryChristmasOnIceToolStripMenuItem, Me.MiningBaseDefenseToolStripMenuItem, Me.SuperFalzToolStripMenuItem, Me.TrickOrTreatToolStripMenuItem, Me.TunnelsToolStripMenuItem, Me.UrbanToolStripMenuItem, Me.WithWindAndRainToolStripMenuItem})
+        Me.tsmSelectEQs.Enabled = False
         Me.tsmSelectEQs.Name = "tsmSelectEQs"
         Me.tsmSelectEQs.Size = New System.Drawing.Size(190, 22)
         Me.tsmSelectEQs.Text = "Show these EQs"
@@ -314,6 +315,7 @@ Partial Class Form1
         '
         'tsmLogin
         '
+        Me.tsmLogin.Enabled = False
         Me.tsmLogin.Name = "tsmLogin"
         Me.tsmLogin.Size = New System.Drawing.Size(190, 22)
         Me.tsmLogin.Text = "Log in to report an EQ"
@@ -322,6 +324,7 @@ Partial Class Form1
         'tsmReportEQ
         '
         Me.tsmReportEQ.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmReportCaves, Me.tsmReportFloatingContinent, Me.tsmReportFireSwirl, Me.tsmReportDarkFalz, Me.tsmReportSuperFalz, Me.tsmReportDesert, Me.tsmReportTunnels, Me.tsmReportForest, Me.tsmReportWithWindAndRain, Me.tsmReportCity, Me.tsmReportCoast, Me.tsmTesting, Me.tsmReportGeneral})
+        Me.tsmReportEQ.Enabled = False
         Me.tsmReportEQ.Name = "tsmReportEQ"
         Me.tsmReportEQ.Size = New System.Drawing.Size(190, 22)
         Me.tsmReportEQ.Text = "Report EQ"
@@ -407,6 +410,7 @@ Partial Class Form1
         '
         'ToolStripMenuItem1
         '
+        Me.ToolStripMenuItem1.Enabled = False
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(190, 22)
         Me.ToolStripMenuItem1.Text = "Report EQ (System 2)"
@@ -426,6 +430,7 @@ Partial Class Form1
         '
         'tscShip
         '
+        Me.tscShip.Enabled = False
         Me.tscShip.Items.AddRange(New Object() {"Ship01", "Ship02", "Ship03", "Ship04", "Ship05", "Ship06", "Ship07", "Ship08", "Ship09", "Ship10"})
         Me.tscShip.Name = "tscShip"
         Me.tscShip.Size = New System.Drawing.Size(121, 23)
@@ -526,26 +531,30 @@ Partial Class Form1
         '
         'lblEQText
         '
+        Me.lblEQText.AutoSize = True
         Me.lblEQText.BackColor = System.Drawing.Color.Transparent
         Me.lblEQText.Font = New System.Drawing.Font("Cambria", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblEQText.ForeColor = System.Drawing.Color.White
         Me.lblEQText.Location = New System.Drawing.Point(85, 34)
+        Me.lblEQText.MaximumSize = New System.Drawing.Size(253, 68)
         Me.lblEQText.Name = "lblEQText"
-        Me.lblEQText.Size = New System.Drawing.Size(253, 85)
+        Me.lblEQText.Size = New System.Drawing.Size(100, 17)
         Me.lblEQText.TabIndex = 2
         Me.lblEQText.Text = "EQDescription"
         '
         'lblTitle
         '
+        Me.lblTitle.AutoSize = True
         Me.lblTitle.BackColor = System.Drawing.Color.Transparent
-        Me.lblTitle.Font = New System.Drawing.Font("Cambria", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitle.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitle.ForeColor = System.Drawing.Color.White
-        Me.lblTitle.Location = New System.Drawing.Point(11, 0)
+        Me.lblTitle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lblTitle.Location = New System.Drawing.Point(8, 6)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(317, 22)
+        Me.lblTitle.Size = New System.Drawing.Size(221, 15)
         Me.lblTitle.TabIndex = 3
         Me.lblTitle.Text = "ShipXX EQ Alert (DateStart-DateFinish)"
-        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'tmrDisplay
         '

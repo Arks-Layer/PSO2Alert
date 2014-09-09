@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿
+Imports System.IO
 Imports System.Net
 Imports LinqToTwitter
 Imports System.Text.RegularExpressions
@@ -21,8 +22,7 @@ Public Class Form1
         Dim source As String = String.Empty
         If File.Exists(Application.StartupPath & "\PSO2 Alert Updater.exe") Then File.Delete(Application.StartupPath & "\PSO2 Alert Updater.exe")
         Try
-            If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2Aversion.xml") = "OK" Then source = wc.DownloadString("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2Aversion.xml")
-            If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2Aversion.xml") <> "OK" Then source = wc.DownloadString("http://arks-layer.com/tweaker/PSO2Aversion.xml")
+            source = wc.DownloadString("http://162.243.211.123/freedom/PSO2Aversion.xml")
         Catch ex As Exception
             NotifyIcon1.ShowBalloonTip(7000, "", "PSO2 Alert error: Could not check for updates!", ToolTipIcon.Info)
             Threading.Thread.Sleep(7000)
@@ -59,39 +59,125 @@ Public Class Form1
                 Dim updateyesno As MsgBoxResult = MsgBox("You are using an outdated version of PSO2 Alert. You have version " & My.Application.Info.Version.ToString & " and the latest version is " & currentVersion & ". Would you like to download the latest version?" & vbCrLf & vbCrLf & "Here's the list of changes:" & vbCrLf & changelogtotal, MsgBoxStyle.YesNo)
                 If updateyesno = MsgBoxResult.Yes Then
                     Dim wc2 As WebClient = New WebClient()
-                    If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2%20Alert%20Updater.exe") = "OK" Then wc.DownloadFile("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2%20Alert%20Updater.exe", "PSO2 Alert Updater.exe")
-                    If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2%20Alert%20Updater.exe") <> "OK" Then wc.DownloadFile("http://arks-layer.com/tweaker/PSO2%20Alert%20Updater.exe", "PSO2 Alert Updater.exe")
+                    wc.DownloadFile("http://162.243.211.123/freedom/PSO2%20Alert%20Updater.exe", "PSO2 Alert Updater.exe")
                     Process.Start(Environment.CurrentDirectory & "\PSO2 Alert Updater.exe")
                 End If
             End If
         End If
     End Sub
     Private Sub InitialEQCheck()
-        Dim client As New System.Net.WebClient()
-        If CheckLink("http://arks-layer.com/twitter/getEQ.php?ship=" & LoadSetting("ShipToQuery")) <> "OK" Then Exit Sub
-        Dim json = client.DownloadString("http://arks-layer.com/twitter/getEQ.php?ship=" & LoadSetting("ShipToQuery"))
-        'MsgBox(json) 
-        Dim jss As New System.Web.Script.Serialization.JavaScriptSerializer()
-        Dim dict As JSON_result = jss.Deserialize(Of JSON_result)(json)
-        Dim RandomIDShit As String = dict.id
-        Dim BeginTime As String = dict.from
-        Dim EnglishName As String = dict.english
-        Dim EQImage As String = dict.img
-        Dim Ship As String = dict.name
-        Dim EQText As String = dict.text
-        Dim StopTime As String = dict.until
-        Dim base As New DateTime(1970, 1, 1)
-        Dim StartTime As DateTime = base.AddMilliseconds(BeginTime)
-        Dim EndTime As DateTime = base.AddMilliseconds(StopTime)
-        Dim ConvertedStartTime As DateTime = StartTime.ToLocalTime
-        Dim CST2 As String = ConvertedStartTime.ToString("M/d/yyyy hh:mm:ss tt")
-        Dim ConvertedEndTime As DateTime = EndTime.ToLocalTime
+        On Error Resume Next
+        If LoadSetting("ShipToQuery") <> "Ship02" Then Exit Sub
+        Dim download As New WebClient
+        download.Encoding = System.Text.Encoding.UTF8
+        Dim CurrentEQ As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
+        Dim CurrentEQOriginal As String = CurrentEQ
+        'Ship02 23時30分【PSO2】第三採掘基地ダーカー接近予告
+        'ShipXX (Irrelevant)
+        ' 23時30分 Hour時Minute分
+        '【PSO2】For PSO2 (duh)
+        '第三採掘基地ダーカー接近予告 Name of EQ
+        CurrentEQ = CurrentEQ.Substring(CurrentEQ.IndexOf("Ship02") + 7)
+        Dim BrokenDownString As String() = CurrentEQ.Split(" ")
+        Dim BrokenDownString2 As String() = BrokenDownString(0).Split("【")
+        Dim EQTime As String = BrokenDownString2(0)
+        EQTime = EQTime.Replace("時", ":")
+        Dim EQHour As Integer = Convert.ToInt32(EQTime.Substring(0, 2))
+        Dim EQHourEST As Integer
+        Dim EQMinutes As String() = EQTime.Split(":")
+
+        Dim AMPM As String = ""
+        Select Case EQHour
+            Case 0
+                EQHourEST = 11
+                AMPM = "AM"
+            Case 1
+                EQHourEST = 12
+                AMPM = "PM"
+            Case 2
+                EQHourEST = 1
+                AMPM = "PM"
+            Case 3
+                EQHourEST = 2
+                AMPM = "PM"
+            Case 4
+                EQHourEST = 3
+                AMPM = "PM"
+            Case 5
+                EQHourEST = 4
+                AMPM = "PM"
+            Case 6
+                EQHourEST = 5
+                AMPM = "PM"
+            Case 7
+                EQHourEST = 6
+                AMPM = "PM"
+            Case 8
+                EQHourEST = 7
+                AMPM = "PM"
+            Case 9
+                EQHourEST = 8
+                AMPM = "PM"
+            Case 10
+                EQHourEST = 9
+                AMPM = "PM"
+            Case 11
+                EQHourEST = 10
+                AMPM = "PM"
+            Case 12
+                EQHourEST = 11
+                AMPM = "PM"
+            Case 13
+                EQHourEST = 12
+                AMPM = "AM"
+            Case 14
+                EQHourEST = 1
+                AMPM = "AM"
+            Case 15
+                EQHourEST = 2
+                AMPM = "AM"
+            Case 16
+                EQHourEST = 3
+                AMPM = "AM"
+            Case 17
+                EQHourEST = 4
+                AMPM = "AM"
+            Case 18
+                EQHourEST = 5
+                AMPM = "AM"
+            Case 19
+                EQHourEST = 6
+                AMPM = "AM"
+            Case 20
+                EQHourEST = 7
+                AMPM = "AM"
+            Case 21
+                EQHourEST = 8
+                AMPM = "AM"
+            Case 22
+                EQHourEST = 9
+                AMPM = "AM"
+            Case 23
+                EQHourEST = 10
+                AMPM = "AM"
+            Case 24
+                EQHourEST = 11
+                AMPM = "PM"
+            Case Else
+                EQHourEST = 99
+                AMPM = "ERROR"
+        End Select
+        EQTime = EQTime.Replace("分", "")
+        Dim EQName As String = BrokenDownString2(1).Replace("PSO2】", "")
+        Dim EQText As String = ""
+        Dim EQPic As String = ""
+        EQName = EQName.Replace(vbCr, "").Replace(vbLf, "")
         'Dim Currenttime As DateTime = TimeOfDay.ToUniversalTime
         'Dim CurrentTimeConverted As DateTime = Currenttime.ToLocalTime
         'MsgBox("Current UTC time is: " & Currenttime & ". Converted local time is: " & CurrentTimeConverted & ".")
         'Me.Close()
         'TextBox1.Text = ("The EQ -" & EQText & "- on -" & Ship & "- will start at -" & ConvertedStartTime & "- and end at -" & ConvertedEndTime & "-, using -" & EQImage & "- as the image!")
-        If LoadSetting("LastEQ") <> json Then
+        If LoadSetting("LastEQ") <> CurrentEQOriginal Then
             If LoadSetting("PlaySound") = "Yes" Then
                 'MsgBox("Yo!")
                 If File.Exists(LoadSetting("WAVFile")) = True Then
@@ -100,30 +186,33 @@ Public Class Form1
                     NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
                 End If
             End If
-            ShowEQ(Ship, EQText, CST2, ConvertedEndTime, EQImage, "1", EnglishName)
-            SaveSetting("LastEQ", json)
+            ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", EQName)
+            SaveSetting("LastEQ", CurrentEQOriginal)
         End If
-        SaveSetting("LastEQ", json)
+        SaveSetting("LastEQ", CurrentEQOriginal)
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        '        If LoadSetting("Arks Ship Fire Swirl") = "" Then Sa
-        If LoadSetting("Arks Ship Fire Swirl") <> "" Then ArksShipFireSwirlToolStripMenuItem.Checked = LoadSetting("Arks Ship Fire Swirl")
-        If LoadSetting("Brave Border Break") <> "" Then BraveBorderBreakToolStripMenuItem.Checked = LoadSetting("Brave Border Break")
-        If LoadSetting("Caves") <> "" Then CavesToolStripMenuItem.Checked = LoadSetting("Caves")
-        If LoadSetting("Urban") <> "" Then UrbanToolStripMenuItem.Checked = LoadSetting("Urban")
-        If LoadSetting("Coast") <> "" Then CoastToolStripMenuItem.Checked = LoadSetting("Coast")
-        If LoadSetting("Cradle of Darkness") <> "" Then CradleOfDarknessToolStripMenuItem.Checked = LoadSetting("Cradle of Darkness")
-        If LoadSetting("Dark Falz") <> "" Then DarkFalzToolStripMenuItem.Checked = LoadSetting("Dark Falz")
-        If LoadSetting("Desert") <> "" Then DesertToolStripMenuItem.Checked = LoadSetting("Desert")
-        If LoadSetting("Super Falz") <> "" Then SuperFalzToolStripMenuItem.Checked = LoadSetting("Super Falz")
-        If LoadSetting("Floating Continent") <> "" Then FloatingContinentToolStripMenuItem.Checked = LoadSetting("Floating Continent")
-        If LoadSetting("Forest") <> "" Then ForestToolStripMenuItem.Checked = LoadSetting("Forest")
-        If LoadSetting("Merry Christmas on Ice") <> "" Then MerryChristmasOnIceToolStripMenuItem.Checked = LoadSetting("Merry Christmas on Ice")
-        If LoadSetting("Mining Base Defense") <> "" Then MiningBaseDefenseToolStripMenuItem.Checked = LoadSetting("Mining Base Defense")
-        If LoadSetting("Trick or Treat") <> "" Then TrickOrTreatToolStripMenuItem.Checked = LoadSetting("Trick or Treat")
-        If LoadSetting("Tunnels") <> "" Then TunnelsToolStripMenuItem.Checked = LoadSetting("Tunnels")
-        If LoadSetting("With Wind And Rain") <> "" Then WithWindAndRainToolStripMenuItem.Checked = LoadSetting("With Wind And Rain")
+        'If LoadSetting("Arks Ship Fire Swirl") = "" Then Sa
+
+        '[AIDA] will be fixed later
+        'If LoadSetting("Arks Ship Fire Swirl") <> "" Then ArksShipFireSwirlToolStripMenuItem.Checked = LoadSetting("Arks Ship Fire Swirl")
+        'If LoadSetting("Brave Border Break") <> "" Then BraveBorderBreakToolStripMenuItem.Checked = LoadSetting("Brave Border Break")
+        'If LoadSetting("Caves") <> "" Then CavesToolStripMenuItem.Checked = LoadSetting("Caves")
+        'If LoadSetting("Urban") <> "" Then UrbanToolStripMenuItem.Checked = LoadSetting("Urban")
+        'If LoadSetting("Coast") <> "" Then CoastToolStripMenuItem.Checked = LoadSetting("Coast")
+        'If LoadSetting("Cradle of Darkness") <> "" Then CradleOfDarknessToolStripMenuItem.Checked = LoadSetting("Cradle of Darkness")
+        'If LoadSetting("Dark Falz") <> "" Then DarkFalzToolStripMenuItem.Checked = LoadSetting("Dark Falz")
+        'If LoadSetting("Desert") <> "" Then DesertToolStripMenuItem.Checked = LoadSetting("Desert")
+        'If LoadSetting("Super Falz") <> "" Then SuperFalzToolStripMenuItem.Checked = LoadSetting("Super Falz")
+        'If LoadSetting("Floating Continent") <> "" Then FloatingContinentToolStripMenuItem.Checked = LoadSetting("Floating Continent")
+        'If LoadSetting("Forest") <> "" Then ForestToolStripMenuItem.Checked = LoadSetting("Forest")
+        'If LoadSetting("Merry Christmas on Ice") <> "" Then MerryChristmasOnIceToolStripMenuItem.Checked = LoadSetting("Merry Christmas on Ice")
+        'If LoadSetting("Mining Base Defense") <> "" Then MiningBaseDefenseToolStripMenuItem.Checked = LoadSetting("Mining Base Defense")
+        'If LoadSetting("Trick or Treat") <> "" Then TrickOrTreatToolStripMenuItem.Checked = LoadSetting("Trick or Treat")
+        'If LoadSetting("Tunnels") <> "" Then TunnelsToolStripMenuItem.Checked = LoadSetting("Tunnels")
+        'If LoadSetting("With Wind And Rain") <> "" Then WithWindAndRainToolStripMenuItem.Checked = LoadSetting("With Wind And Rain")
+
         'SaveSetting("Arks Ship Fire Swirl", ArksShipFireSwirlToolStripMenuItem.Checked)
         'Uncomment to continue on multi-monitor support
         'Dim numberofmonitors As Integer = Screen.AllScreens.Length
@@ -147,7 +236,9 @@ Public Class Form1
             End If
         End If
         If LoadSetting("StartWithWindows") = "Yes" Then tsmStartWithWindows.Checked = True
-        If LoadSetting("ShipToQuery") = "" Then SaveSetting("ShipToQuery", "Ship02")
+        '[AIDA] We only support ship 2 right now, so force that.
+        SaveSetting("ShipToQuery", "Ship02")
+        'If LoadSetting("ShipToQuery") = "" Then SaveSetting("ShipToQuery", "Ship02")
         tscShip.Text = LoadSetting("ShipToQuery")
         'tsmDebugShowEQ.Visible = True
         'If My.Settings.Ship = "" Then My.Settings.Ship = "Ship02"
@@ -248,31 +339,115 @@ Public Class Form1
     End Function
 
     Private Sub CheckForEQs1()
-        Dim client As New System.Net.WebClient()
-        'https://copy.com/MeU8A0svvEB9qeq7
-        'Dim json = client.DownloadString("https://copy.com/MeU8A0svvEB9qeq7")
-        If CheckLink("http://arks-layer.com/twitter/getEQ.php?ship=" & LoadSetting("ShipToQuery")) <> "OK" Then Exit Sub
-        Dim json = client.DownloadString("http://arks-layer.com/twitter/getEQ.php?ship=" & LoadSetting("ShipToQuery"))
-        'MsgBox(json) '
-        '1380293580000
-        '1380281400000
-        Dim jss As New System.Web.Script.Serialization.JavaScriptSerializer()
-        Dim dict As JSON_result = jss.Deserialize(Of JSON_result)(json)
-        Dim RandomIDShit As String = dict.id
-        Dim EnglishName As String = dict.english
-        Dim BeginTime As String = dict.from
-        Dim EQImage As String = dict.img
-        Dim Ship As String = dict.name
-        Dim EQText As String = dict.text
-        Dim StopTime As String = dict.until
-        Dim base As New DateTime(1970, 1, 1)
-        Dim StartTime As DateTime = base.AddMilliseconds(BeginTime)
-        Dim EndTime As DateTime = base.AddMilliseconds(StopTime)
-        Dim ConvertedStartTime As DateTime = StartTime.ToLocalTime
-        Dim CST2 As String = ConvertedStartTime.ToString("M/d/yyyy hh:mm:ss tt")
-        Dim ConvertedEndTime As DateTime = EndTime.ToLocalTime
-        Dim CurrentTime As DateTime = Date.Now
-        If LoadSetting("LastEQ") <> json Then
+        On Error Resume Next
+        If LoadSetting("ShipToQuery") <> "Ship02" Then Exit Sub
+        Dim download As New WebClient
+        download.Encoding = System.Text.Encoding.UTF8
+        Dim CurrentEQ As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
+
+        Dim CurrentEQOriginal As String = CurrentEQ
+        'Ship02 23時30分【PSO2】第三採掘基地ダーカー接近予告
+        'ShipXX (Irrelevant)
+        ' 23時30分 Hour時Minute分
+        '【PSO2】For PSO2 (duh)
+        '第三採掘基地ダーカー接近予告 Name of EQ
+        CurrentEQ = CurrentEQ.Substring(CurrentEQ.IndexOf("Ship02") + 7)
+        Dim BrokenDownString As String() = CurrentEQ.Split(" ")
+        Dim BrokenDownString2 As String() = BrokenDownString(0).Split("【")
+        Dim EQTime As String = BrokenDownString2(0)
+        EQTime = EQTime.Replace("時", ":")
+        Dim EQHour As Integer = Convert.ToInt32(EQTime.Substring(0, 2))
+        Dim EQHourEST As Integer
+        Dim EQMinutes As String() = EQTime.Split(":")
+
+        Dim AMPM As String = ""
+        Select Case EQHour
+            Case 0
+                EQHourEST = 11
+                AMPM = "AM"
+            Case 1
+                EQHourEST = 12
+                AMPM = "PM"
+            Case 2
+                EQHourEST = 1
+                AMPM = "PM"
+            Case 3
+                EQHourEST = 2
+                AMPM = "PM"
+            Case 4
+                EQHourEST = 3
+                AMPM = "PM"
+            Case 5
+                EQHourEST = 4
+                AMPM = "PM"
+            Case 6
+                EQHourEST = 5
+                AMPM = "PM"
+            Case 7
+                EQHourEST = 6
+                AMPM = "PM"
+            Case 8
+                EQHourEST = 7
+                AMPM = "PM"
+            Case 9
+                EQHourEST = 8
+                AMPM = "PM"
+            Case 10
+                EQHourEST = 9
+                AMPM = "PM"
+            Case 11
+                EQHourEST = 10
+                AMPM = "PM"
+            Case 12
+                EQHourEST = 11
+                AMPM = "PM"
+            Case 13
+                EQHourEST = 12
+                AMPM = "AM"
+            Case 14
+                EQHourEST = 1
+                AMPM = "AM"
+            Case 15
+                EQHourEST = 2
+                AMPM = "AM"
+            Case 16
+                EQHourEST = 3
+                AMPM = "AM"
+            Case 17
+                EQHourEST = 4
+                AMPM = "AM"
+            Case 18
+                EQHourEST = 5
+                AMPM = "AM"
+            Case 19
+                EQHourEST = 6
+                AMPM = "AM"
+            Case 20
+                EQHourEST = 7
+                AMPM = "AM"
+            Case 21
+                EQHourEST = 8
+                AMPM = "AM"
+            Case 22
+                EQHourEST = 9
+                AMPM = "AM"
+            Case 23
+                EQHourEST = 10
+                AMPM = "AM"
+            Case 24
+                EQHourEST = 11
+                AMPM = "PM"
+            Case Else
+                EQHourEST = 99
+                AMPM = "ERROR"
+        End Select
+        EQTime = EQTime.Replace("分", "")
+        Dim EQName As String = BrokenDownString2(1).Replace("PSO2】", "")
+        Dim EQText As String = ""
+        Dim EQPic As String = ""
+        EQName = EQName.Replace(vbCr, "").Replace(vbLf, "")
+
+        If LoadSetting("LastEQ") <> CurrentEQOriginal Then
             If LoadSetting("PlaySound") = "Yes" Then
                 'MsgBox("Yo!")
                 If File.Exists(LoadSetting("WAVFile")) = True Then
@@ -281,11 +456,11 @@ Public Class Form1
                     NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
                 End If
             End If
-            ShowEQ(Ship, EQText, CST2, ConvertedEndTime, EQImage, "1", EnglishName)
-            SaveSetting("LastEQ", json)
+            ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", EQName)
+            SaveSetting("LastEQ", CurrentEQOriginal)
         End If
     End Sub
-Private Sub tmrCheck_Tick(sender As Object, e As EventArgs) Handles tmrCheck.Tick
+    Private Sub tmrCheck_Tick(sender As Object, e As EventArgs) Handles tmrCheck.Tick
         Try
 
             Dim t1 As New Threading.Thread(AddressOf CheckForEQs1)
@@ -304,7 +479,7 @@ Private Sub tmrCheck_Tick(sender As Object, e As EventArgs) Handles tmrCheck.Tic
             'MsgBox(src.ToString)
             ' Create a match using regular exp<b></b>ressions
             'http://arks-layer.com/Story%20Patch%208-8-2013.rar.torrent
-            'Wildcare is .*?
+            'Wildcard is .*?
             'Dim m As Match = Regex.Match(src, "<p class=""js-tweet-text tweet-text"">.*?</p>")
             'MsgBox(m.Value)
             ' Spit out the value plucked from the code
@@ -375,7 +550,7 @@ Private Sub tmrCheck_Tick(sender As Object, e As EventArgs) Handles tmrCheck.Tic
         Catch ex As Exception
 
         End Try
-End Sub
+    End Sub
     'Function IsConnected() As Boolean
     '    Try
     '        Return My.Computer.Network.Ping("google.com")
@@ -383,28 +558,127 @@ End Sub
     '        Return False
     '    End Try
     'End Function
-    Public Sub ShowEQ(ByRef Ship As String, EQText As String, StartTime As String, EndTime As String, EQImage As String, Version As String, EnglishName As String)
+    Public Sub ShowEQ(ByRef Ship As String, StartTime As String, EndTime As String, EQName As String)
+        Dim EQText As String = ""
+        Dim EQPic As String = ""
+
+        If EQName = "第一採掘基地ダーカー接近予告" Then
+            EQName = "Primary Mining Base"
+            EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's primary mining base!"
+            EQPic = "http://arks-layer.com/twitter/images/pso2_52b21acd393ef.png"
+        End If
+        If EQName = "第二採掘基地ダーカー接近予告" Then
+            EQName = "Secondary Mining Base"
+            EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's secondary mining base!"
+            EQPic = "http://arks-layer.com/twitter/images/pso2_5330d2ea329a8.png"
+        End If
+
+        If EQName = "第三採掘基地ダーカー接近予告" Then
+            EQName = "Third Mining Base"
+            EQText = "Emergency broadcast! Darkers are approaching the outlying regions of Lillipa's tertiary mining base!"
+            EQPic = "http://arks-layer.com/twitter/images/pso2_53c51723e69df.png"
+        End If
+
+        If EQName = "旧マザーシップ　作戦予告" Then
+            EQName = "Beckoning Darkness"
+            EQText = "Emergency broadcast! A darker-infested ARKS mothership is approaching the fleet. All ARKS, prepare for large-scale combat."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_53b500ffbc0dd.png"
+        End If
+
+        If EQName = "アークス船団航行物体接近予告" Then
+            EQName = "Dark Falz Loser"
+            EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_536a76de8212f.png"
+        End If
+        If EQName = "アークス船団ＤＦ接近予告" Then
+            EQName = "Dark Falz Elder"
+            EQText = "Emergency broadcast! Dark Falz is approaching the outlying regions of the ARKS fleet!"
+            EQPic = "http://arks-layer.com/twitter/images/pso2_528c064a37e63.png"
+        End If
+        If EQName = "森林　作戦予告" Then
+            EQName = "Planet Naberius EQ"
+            EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_51e3da34918fe.png"
+        End If
+
+        If EQName = "惑星リリーパ　作戦予告" Then
+            EQName = "Planet Lillipa EQ"
+            EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_526120692499a.png"
+        End If
+
+        If EQName = "惑星アムドゥスキア　作戦予告" Then
+            EQName = "Planet Amduscia EQ"
+            EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_51f2131743674.png"
+        End If
+
+        If EQName = "浮遊大陸　作戦予告" Then
+            EQName = "Planet Amduscia EQ"
+            EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_51f2131743674.png"
+        End If
+
+        If EQName = "インタラプトランキング予告" Then
+            EQName = "Interrupt Rankings"
+            EQText = "We will be holding Interrupt Rankings starting at the above time. Be sure to participate!"
+            EQPic = "http://arks-layer.com/twitter/images/pso2_52d1aa345df1b.png"
+        End If
+
+        If EQName = "惑星ウォパル　作戦予告" Then
+            EQName = "Beach Wars 2"
+            EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_522abdfa29c25.png"
+        End If
+
+        If EQName = "異常値観測宙域　一斉調査予告" Then
+            EQName = "Darker Den"
+            EQText = "The ARKS are preparing for a large-scale investigation of anomalous readings in deep space."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_5295bf1569c73.png"
+        End If
+
+        If EQName = "アークス船団ダーカー接近予告" Then
+            EQName = "Urban EQ"
+            EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of the ARKS fleet!"
+            EQPic = "http://arks-layer.com/twitter/images/pso2_52da066592753.png"
+        End If
+
+        If EQName = "ショップエリア　ライブ予告" Then
+            EQName = "Shop Area Concert"
+            EQText = "We're holding a concert in the Shop Area soon! We hope to see everyone there!"
+            EQPic = ""
+        End If
+
+        If EQName = "地下坑道　作戦予告" Then
+            EQName = "Mecha Awakening"
+            EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Lillipan tunnels."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_51e3da03c6b16.png"
+        End If
+
+
         'If EQText = "A fragment of Dark Falz is approaching Oracle at an incredible rate! All Arks report to the mission counter to drive him back!" Then
         ' lblEQText.Font = New Drawing.Font("Cambria", 10)
         ' Else
         ' lblEQText.Font = New Drawing.Font("Cambria", 12)
         ' End If
-        If EnglishName = "Arks Ship Fire Swirl" And ArksShipFireSwirlToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Brave Border Break" And BraveBorderBreakToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Caves" And CavesToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "City" And UrbanToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Coast" And CoastToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Cradle of Darkness" And CradleOfDarknessToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Dark Falz" And DarkFalzToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Desert" And DesertToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Falz Elder Fragment" And SuperFalzToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Floating Continent" And FloatingContinentToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Forest" And ForestToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Merry Christmas on Ice" And MerryChristmasOnIceToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Mining Base Defense: Tower Defense" And MiningBaseDefenseToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Trick or Treat" And TrickOrTreatToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "Tunnels" And TunnelsToolStripMenuItem.Checked = False Then Exit Sub
-        If EnglishName = "With Wind And Rain" And WithWindAndRainToolStripMenuItem.Checked = False Then Exit Sub
+
+        '[AIDA] Gotta fix this later
+        'If EnglishName = "Arks Ship Fire Swirl" And ArksShipFireSwirlToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Brave Border Break" And BraveBorderBreakToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Caves" And CavesToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "City" And UrbanToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Coast" And CoastToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Cradle of Darkness" And CradleOfDarknessToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Dark Falz" And DarkFalzToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Desert" And DesertToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Falz Elder Fragment" And SuperFalzToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Floating Continent" And FloatingContinentToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Forest" And ForestToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Merry Christmas on Ice" And MerryChristmasOnIceToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Mining Base Defense: Tower Defense" And MiningBaseDefenseToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Trick or Treat" And TrickOrTreatToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "Tunnels" And TunnelsToolStripMenuItem.Checked = False Then Exit Sub
+        'If EnglishName = "With Wind And Rain" And WithWindAndRainToolStripMenuItem.Checked = False Then Exit Sub
 
         If Me.InvokeRequired Then
             Me.Invoke(New Action(Of String)(AddressOf ShowRecentEQs), Text)
@@ -433,23 +707,33 @@ End Sub
                 Me.Location = New Point(x, y)
                 'MsgBox("X: " & x & " Y: " & y)
             End If
-            picEQImage.ImageLocation = EQImage
+            picEQImage.ImageLocation = EQPic
             Application.DoEvents()
             lblEQText.Text = EQText
-            If Version = "1" Then
-                Dim StartTimeJustTime() As String = Split(StartTime, " ")
-                Dim EndTimeJustTime() As String = Split(EndTime, " ")
-                Dim FINALSTARTTIME As String = StartTimeJustTime(1)
-                FINALSTARTTIME = FINALSTARTTIME.Substring(0, FINALSTARTTIME.Length - 3)
-                Dim FINALENDTIME As String = EndTimeJustTime(1)
-                FINALENDTIME = FINALENDTIME.Substring(0, FINALENDTIME.Length - 3)
-                lblTitle.Text = Ship & " EQ (" & FINALSTARTTIME & " - " & FINALENDTIME & ")"
-                If LoggingEnabled = True Then
-                    Dim strFile As String = Application.StartupPath & "\EQLog.txt"
-                    Using sw As New StreamWriter(File.Open(strFile, FileMode.Append))
-                        sw.WriteLine(Ship & " EQ (" & FINALSTARTTIME & "0 - " & FINALENDTIME & "0): " & EQText & vbCrLf)
-                    End Using
-                End If
+            'Deprecated
+            'If Version = "1" Then
+            ' Dim StartTimeJustTime() As String = Split(StartTime, " ")
+            ' Dim EndTimeJustTime() As String = Split(EndTime, " ")
+            ' Dim FINALSTARTTIME As String = StartTimeJustTime(1)
+            ' FINALSTARTTIME = FINALSTARTTIME.Substring(0, FINALSTARTTIME.Length - 3)
+            ' Dim FINALENDTIME As String = EndTimeJustTime(1)
+            ' FINALENDTIME = FINALENDTIME.Substring(0, FINALENDTIME.Length - 3)
+            ' lblTitle.Text = Ship & " EQ (" & FINALSTARTTIME & " - " & FINALENDTIME & ")"
+            'If LoggingEnabled = True Then
+            ' Dim strFile As String = Application.StartupPath & "\EQLog.txt"
+            ' Using sw As New StreamWriter(File.Open(strFile, FileMode.Append))
+            ' sw.WriteLine(Ship & " EQ (" & FINALSTARTTIME & "0 - " & FINALENDTIME & "0): " & EQText & vbCrLf)
+            ' End Using
+            'End If
+            'End If
+            'ShowEQ("Ship 2", "", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", "http://arks-layer.com/twitter/images/pso2_51e3da03c6b16.png", "1", EQName)
+            'Public Sub ShowEQ(ByRef Ship As String, EQText As String, StartTime As String, EndTime As String, EQImage As String, Version As String, EnglishName As String)
+            lblTitle.Text = Ship & " " & EQName & " " & StartTime & "JST (" & EndTime
+            If LoggingEnabled = True Then
+                Dim strFile As String = Application.StartupPath & "\EQLog.txt"
+                Using sw As New StreamWriter(File.Open(strFile, FileMode.Append))
+                    sw.WriteLine(Ship & " " & EQName & " " & StartTime & "JST (" & EndTime & vbCrLf)
+                End Using
             End If
             'If Version = "2" Then lblTitle.Text = Ship & " EQ (" & StartTime & " - " & EndTime & ")"
             Application.DoEvents()
@@ -480,54 +764,6 @@ End Sub
         tmrDisplay.Enabled = False
     End Sub
 
-    Private Sub tsmASFS_Click(sender As Object, e As EventArgs) Handles tsmASFS.Click
-        ShowEQ("Ship02", "A fire has broken out in the city area. Report immediately to get the area under control.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e521f1ab253.png", "1", "Arks Ship Fire Swirl")
-    End Sub
-
-    Private Sub tsmCaves_Click(sender As Object, e As EventArgs) Handles tsmCaves.Click
-        ShowEQ("Ship02", "Arks is preparing for large scale operations on planet Amduscia, Caves.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e3b4da8c642.png", "1", "Caves")
-    End Sub
-
-    Private Sub tsmCity_Click(sender As Object, e As EventArgs) Handles tsmCity.Click
-        ShowEQ("Ship02", "Darkers have invaded the civilian sector. All Arks dispatch to restore the area.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e3d9c97f89d.png", "1", "City")
-    End Sub
-
-    Private Sub tsmCoast_Click(sender As Object, e As EventArgs) Handles tsmCoast.Click
-        ShowEQ("Ship02", "Arks is preparing for large scale operations on planet Vorpar, Coast.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_522abdfa29c25.png", "1", "")
-    End Sub
-
-    Private Sub tsmDarkFalz_Click(sender As Object, e As EventArgs) Handles tsmDarkFalz.Click
-        ShowEQ("Ship02", "Dark Falz is approaching Oracle. All Arks report to the mission counter at once!", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e3d6e34b936.png", "1", "")
-    End Sub
-
-    Private Sub tsmDesert_Click(sender As Object, e As EventArgs) Handles tsmDesert.Click
-        ShowEQ("Ship02", "Arks is preparing for large scale operations on planet Lilipa, Desert.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e1b3d369ead.png", "1", "")
-    End Sub
-
-    Private Sub tsmFloating_Click(sender As Object, e As EventArgs) Handles tsmFloating.Click
-        ShowEQ("Ship02", "Arks is preparing for large scale operations on the Floating Continent, Amduscia.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51f2131743674.png", "1", "")
-    End Sub
-
-    Private Sub tsmForest_Click(sender As Object, e As EventArgs) Handles tsmForest.Click
-        ShowEQ("Ship02", "Arks is preparing for large scale operations on planet Naberius, Forest.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e3da34918fe.png", "1", "")
-    End Sub
-
-    Private Sub tsmGeneral_Click(sender As Object, e As EventArgs) Handles tsmGeneral.Click
-        ShowEQ("Ship02", "Arks is preparing for large scale operations. No information is currently available.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_522c0d01ea0fd.png", "1", "")
-    End Sub
-
-    Private Sub tsmSuperFalz_Click(sender As Object, e As EventArgs) Handles tsmSuperFalz.Click
-        ShowEQ("Ship02", "A fragment of Dark Falz is approaching Oracle at an incredible rate! All Arks report to the mission counter to drive him back!", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e3d6e34b936.png", "1", "")
-    End Sub
-
-    Private Sub tsmTunnels_Click(sender As Object, e As EventArgs) Handles tsmTunnels.Click
-        ShowEQ("Ship02", "Arks is preparing for large scale operations on planet Lilipa, Tunnels.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_51e3da03c6b16.png", "1", "")
-    End Sub
-
-    Private Sub tsmWindAndRain_Click(sender As Object, e As EventArgs) Handles tsmWindAndRain.Click
-        ShowEQ("Ship02", "An influx of enemies have appeared on planet Naberius, Forest. All Arks, prepare to investigate.", "9/27/2013 12:00AM", "9/27/2013 12:30PM", "http://arks-layer.com/twitter/images/pso2_523ede034e26d.bmp", "1", "")
-    End Sub
-
     Private Sub lblTitle_Click(sender As Object, e As EventArgs) Handles lblTitle.Click
         tmrDisplay.Enabled = False
         Me.Opacity = 0
@@ -535,26 +771,137 @@ End Sub
     End Sub
 
     Private Sub ShowRecentEQs()
-        Dim client As New System.Net.WebClient()
-        Dim json = client.DownloadString("http://arks-layer.com/twitter/getEQ.php?ship=" & LoadSetting("ShipToQuery"))
+        'Dim client As New System.Net.WebClient()
+        'Dim json = client.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
+        'MsgBox(LoadSetting("ShipToQuery"))
         'MsgBox(json)
-        Dim jss As New System.Web.Script.Serialization.JavaScriptSerializer()
-        Dim dict As JSON_result = jss.Deserialize(Of JSON_result)(json)
-        Dim RandomIDShit As String = dict.id
-        Dim BeginTime As String = dict.from
-        Dim EnglishName As String = dict.english
-        Dim EQImage As String = dict.img
-        Dim Ship As String = dict.name
-        Dim EQText As String = dict.text
-        Dim StopTime As String = dict.until
-        Dim base As New DateTime(1970, 1, 1)
-        Dim StartTime As DateTime = base.AddMilliseconds(BeginTime)
-        Dim EndTime As DateTime = base.AddMilliseconds(StopTime)
-        Dim ConvertedStartTime As DateTime = StartTime.ToLocalTime
-        Dim CST2 As String = ConvertedStartTime.ToString("M/d/yyyy hh:mm:ss tt")
-        Dim ConvertedEndTime As DateTime = EndTime.ToLocalTime
-        Dim CurrentTime As DateTime = Date.Now
-        ShowEQ(Ship, EQText, CST2, ConvertedEndTime, EQImage, "1", EnglishName)
+        'Dim jss As New System.Web.Script.Serialization.JavaScriptSerializer()
+        'Dim dict As JSON_result = jss.Deserialize(Of JSON_result)(json)
+        'Dim RandomIDShit As String = dict.id
+        'Dim BeginTime As String = dict.from
+        'Dim EnglishName As String = dict.english
+        'Dim EQImage As String = dict.img
+        'Dim Ship As String = dict.name
+        'Dim EQText As String = dict.text
+        'Dim StopTime As String = dict.until
+        'Dim base As New DateTime(1970, 1, 1)
+        'Dim StartTime As DateTime = base.AddMilliseconds(BeginTime)
+        'Dim EndTime As DateTime = base.AddMilliseconds(StopTime)
+        'Dim ConvertedStartTime As DateTime = StartTime.ToLocalTime
+        'Dim CST2 As String = ConvertedStartTime.ToString("M/d/yyyy hh:mm:ss tt")
+        'Dim ConvertedEndTime As DateTime = EndTime.ToLocalTime
+        'Dim CurrentTime As DateTime = Date.Now
+        'ShowEQ(Ship, EQText, CST2, ConvertedEndTime, EQImage, "1", EnglishName)
+
+        '[AIDA] This is the real one
+        'Dim CurrentEQ As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
+        '[AIDA] We're going to use this test one for now
+        If LoadSetting("ShipToQuery") <> "Ship02" Then Exit Sub
+        Dim download As New WebClient
+        download.Encoding = System.Text.Encoding.UTF8
+        Dim CurrentEQ As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
+        'Ship02 23時30分【PSO2】第三採掘基地ダーカー接近予告
+        'ShipXX (Irrelevant)
+        ' 23時30分 Hour時Minute分
+        '【PSO2】For PSO2 (duh)
+        '第三採掘基地ダーカー接近予告 Name of EQ
+        CurrentEQ = CurrentEQ.Substring(CurrentEQ.IndexOf("Ship02") + 7)
+        Dim BrokenDownString As String() = CurrentEQ.Split(" ")
+        Dim BrokenDownString2 As String() = BrokenDownString(0).Split("【")
+        Dim EQTime As String = BrokenDownString2(0)
+        EQTime = EQTime.Replace("時", ":")
+        Dim EQHour As Integer = Convert.ToInt32(EQTime.Substring(0, 2))
+        Dim EQHourEST As Integer
+        Dim EQMinutes As String() = EQTime.Split(":")
+
+        Dim AMPM As String = ""
+        Select Case EQHour
+            Case 0
+                EQHourEST = 11
+                AMPM = "AM"
+            Case 1
+                EQHourEST = 12
+                AMPM = "PM"
+            Case 2
+                EQHourEST = 1
+                AMPM = "PM"
+            Case 3
+                EQHourEST = 2
+                AMPM = "PM"
+            Case 4
+                EQHourEST = 3
+                AMPM = "PM"
+            Case 5
+                EQHourEST = 4
+                AMPM = "PM"
+            Case 6
+                EQHourEST = 5
+                AMPM = "PM"
+            Case 7
+                EQHourEST = 6
+                AMPM = "PM"
+            Case 8
+                EQHourEST = 7
+                AMPM = "PM"
+            Case 9
+                EQHourEST = 8
+                AMPM = "PM"
+            Case 10
+                EQHourEST = 9
+                AMPM = "PM"
+            Case 11
+                EQHourEST = 10
+                AMPM = "PM"
+            Case 12
+                EQHourEST = 11
+                AMPM = "PM"
+            Case 13
+                EQHourEST = 12
+                AMPM = "AM"
+            Case 14
+                EQHourEST = 1
+                AMPM = "AM"
+            Case 15
+                EQHourEST = 2
+                AMPM = "AM"
+            Case 16
+                EQHourEST = 3
+                AMPM = "AM"
+            Case 17
+                EQHourEST = 4
+                AMPM = "AM"
+            Case 18
+                EQHourEST = 5
+                AMPM = "AM"
+            Case 19
+                EQHourEST = 6
+                AMPM = "AM"
+            Case 20
+                EQHourEST = 7
+                AMPM = "AM"
+            Case 21
+                EQHourEST = 8
+                AMPM = "AM"
+            Case 22
+                EQHourEST = 9
+                AMPM = "AM"
+            Case 23
+                EQHourEST = 10
+                AMPM = "AM"
+            Case 24
+                EQHourEST = 11
+                AMPM = "PM"
+            Case Else
+                EQHourEST = 99
+                AMPM = "ERROR"
+        End Select
+        EQTime = EQTime.Replace("分", "")
+        Dim EQName As String = BrokenDownString2(1).Replace("PSO2】", "")
+        Dim EQText As String = ""
+        Dim EQPic As String = ""
+        EQName = EQName.Replace(vbCr, "").Replace(vbLf, "")
+        ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", EQName)
+        'SendMessage("[EQ Notice] " & EQName & " at " & EQTime & "JST (" & EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)")
     End Sub
 
     Private Sub tsmShowRecentEQ_Click(sender As Object, e As EventArgs) Handles tsmShowRecentEQ.Click
@@ -574,7 +921,6 @@ End Sub
     End Sub
 
     Private Sub lblEQText_Click(sender As Object, e As EventArgs) Handles lblEQText.Click
-        'Test for commit
         tmrDisplay.Enabled = False
         Me.Opacity = 0
         Me.TopMost = False
@@ -624,8 +970,7 @@ SELECTFILE:
             Dim wc As New Net.WebClient
             wc.Proxy = Nothing
             Dim source As String = String.Empty
-            If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2Aversion.xml") = "OK" Then source = wc.DownloadString("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2Aversion.xml")
-            If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2Aversion.xml") <> "OK" Then source = wc.DownloadString("http://arks-layer.com/tweaker/PSO2Aversion.xml")
+            source = wc.DownloadString("http://162.243.211.123/freedom/PSO2Aversion.xml")
 
             If source.Contains("<VersionHistory>") = True Then
 
@@ -658,8 +1003,7 @@ SELECTFILE:
                     Dim updateyesno As MsgBoxResult = MsgBox("You are using an outdated version of PSO2 Alert. You have version " & My.Application.Info.Version.ToString & " and the latest version is " & currentVersion & ". Would you like to download the latest version?" & vbCrLf & vbCrLf & "Here's the list of changes:" & vbCrLf & changelogtotal, MsgBoxStyle.YesNo)
                     If updateyesno = MsgBoxResult.Yes Then
                         Dim wc2 As WebClient = New WebClient()
-                        If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2%20Alert%20Updater.exe") = "OK" Then wc.DownloadFile("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2%20Alert%20Updater.exe", "PSO2 Alert Updater.exe")
-                        If CheckLink("https://dl.dropboxusercontent.com/u/23005008/candyapples/PSO2%20Alert%20Updater.exe") <> "OK" Then wc.DownloadFile("http://arks-layer.com/tweaker/PSO2%20Alert%20Updater.exe", "PSO2 Alert Updater.exe")
+                        wc.DownloadFile("http://162.243.211.123/freedom/PSO2A%20Updater.exe", "PSO2 Alert Updater.exe")
                         Process.Start(Environment.CurrentDirectory & "\PSO2 Alert Updater.exe")
                     End If
                 End If
@@ -668,20 +1012,6 @@ SELECTFILE:
 
         End Try
     End Sub
-    Public Function CheckLink(ByVal Url As String) As String
-        Dim req As HttpWebRequest = TryCast(WebRequest.Create(Url), HttpWebRequest)
-        req.Method = "HEAD"
-        Try
-            Using rsp As HttpWebResponse = TryCast(req.GetResponse(), HttpWebResponse)
-                Return "OK"
-            End Using
-        Catch ex As WebException
-            Dim ReturnString As String
-            ReturnString = ex.Message.ToString
-            ReturnString = ReturnString.Replace("The remote server returned an error: ", "")
-            Return ReturnString
-        End Try
-    End Function
     'Public Sub tsmLogin_Click(sender As Object, e As EventArgs) Handles tsmLogin.Click
     '    Dim credentials As IOAuthCredentials = New InMemoryCredentials
     '    Dim randomstring As String = "Xt3KRDBlHNNkBzCG1iagYL1yZlT3fVoPq3QYxBBC2"
