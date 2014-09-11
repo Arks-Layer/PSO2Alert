@@ -30,6 +30,21 @@ Partial Class Form1
         Me.traymenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tsmVersion = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmSelectEQs = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BeachWars2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BeckoningDarkness = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DarkFalzElder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DarkFalzLoser = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DarkerDen = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InterruptRankings = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MechaAwakening = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PlanetAmdusciaEQ = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PlanetLillipaEQ = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PlanetNaberiusEQ = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrimaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SecondaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShopAreaConcert = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TertiaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UrbanEQ = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmSelectMonitor = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrimaryMonitorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SecondaryMonitorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -73,21 +88,7 @@ Partial Class Form1
         Me.tmrDisplay = New System.Windows.Forms.Timer(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.tmrCheckforUpdates = New System.Windows.Forms.Timer(Me.components)
-        Me.PrimaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PlanetNaberiusEQ = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PlanetLillipaEQ = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PlanetAmdusciaEQ = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MechaAwakening = New System.Windows.Forms.ToolStripMenuItem()
-        Me.InterruptRankings = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DarkerDen = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DarkFalzLoser = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DarkFalzElder = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BeachWars2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BeckoningDarkness = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UrbanEQ = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TertiaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShopAreaConcert = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SecondaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ThePitchBlackProvince = New System.Windows.Forms.ToolStripMenuItem()
         Me.traymenu.SuspendLayout()
         CType(Me.picEQImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -127,10 +128,145 @@ Partial Class Form1
         '
         'tsmSelectEQs
         '
-        Me.tsmSelectEQs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BeachWars2, Me.BeckoningDarkness, Me.DarkFalzElder, Me.DarkFalzLoser, Me.DarkerDen, Me.InterruptRankings, Me.MechaAwakening, Me.PlanetAmdusciaEQ, Me.PlanetLillipaEQ, Me.PlanetNaberiusEQ, Me.PrimaryMiningBase, Me.SecondaryMiningBase, Me.ShopAreaConcert, Me.TertiaryMiningBase, Me.UrbanEQ})
+        Me.tsmSelectEQs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BeachWars2, Me.BeckoningDarkness, Me.DarkFalzElder, Me.DarkFalzLoser, Me.DarkerDen, Me.InterruptRankings, Me.MechaAwakening, Me.PlanetAmdusciaEQ, Me.PlanetLillipaEQ, Me.PlanetNaberiusEQ, Me.PrimaryMiningBase, Me.SecondaryMiningBase, Me.ShopAreaConcert, Me.TertiaryMiningBase, Me.ThePitchBlackProvince, Me.UrbanEQ})
         Me.tsmSelectEQs.Name = "tsmSelectEQs"
         Me.tsmSelectEQs.Size = New System.Drawing.Size(190, 22)
         Me.tsmSelectEQs.Text = "Show these EQs"
+        '
+        'BeachWars2
+        '
+        Me.BeachWars2.Checked = True
+        Me.BeachWars2.CheckOnClick = True
+        Me.BeachWars2.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.BeachWars2.Name = "BeachWars2"
+        Me.BeachWars2.Size = New System.Drawing.Size(204, 22)
+        Me.BeachWars2.Text = "Beach Wars 2"
+        '
+        'BeckoningDarkness
+        '
+        Me.BeckoningDarkness.Checked = True
+        Me.BeckoningDarkness.CheckOnClick = True
+        Me.BeckoningDarkness.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.BeckoningDarkness.Name = "BeckoningDarkness"
+        Me.BeckoningDarkness.Size = New System.Drawing.Size(204, 22)
+        Me.BeckoningDarkness.Text = "Beckoning Darkness"
+        '
+        'DarkFalzElder
+        '
+        Me.DarkFalzElder.Checked = True
+        Me.DarkFalzElder.CheckOnClick = True
+        Me.DarkFalzElder.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.DarkFalzElder.Name = "DarkFalzElder"
+        Me.DarkFalzElder.Size = New System.Drawing.Size(204, 22)
+        Me.DarkFalzElder.Text = "Dark Falz Elder"
+        '
+        'DarkFalzLoser
+        '
+        Me.DarkFalzLoser.Checked = True
+        Me.DarkFalzLoser.CheckOnClick = True
+        Me.DarkFalzLoser.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.DarkFalzLoser.Name = "DarkFalzLoser"
+        Me.DarkFalzLoser.Size = New System.Drawing.Size(204, 22)
+        Me.DarkFalzLoser.Text = "Dark Falz Loser"
+        '
+        'DarkerDen
+        '
+        Me.DarkerDen.Checked = True
+        Me.DarkerDen.CheckOnClick = True
+        Me.DarkerDen.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.DarkerDen.Name = "DarkerDen"
+        Me.DarkerDen.Size = New System.Drawing.Size(204, 22)
+        Me.DarkerDen.Text = "Darker Den"
+        '
+        'InterruptRankings
+        '
+        Me.InterruptRankings.Checked = True
+        Me.InterruptRankings.CheckOnClick = True
+        Me.InterruptRankings.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.InterruptRankings.Name = "InterruptRankings"
+        Me.InterruptRankings.Size = New System.Drawing.Size(204, 22)
+        Me.InterruptRankings.Text = "Interrupt Rankings"
+        '
+        'MechaAwakening
+        '
+        Me.MechaAwakening.Checked = True
+        Me.MechaAwakening.CheckOnClick = True
+        Me.MechaAwakening.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.MechaAwakening.Name = "MechaAwakening"
+        Me.MechaAwakening.Size = New System.Drawing.Size(204, 22)
+        Me.MechaAwakening.Text = "Mecha Awakening"
+        '
+        'PlanetAmdusciaEQ
+        '
+        Me.PlanetAmdusciaEQ.Checked = True
+        Me.PlanetAmdusciaEQ.CheckOnClick = True
+        Me.PlanetAmdusciaEQ.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.PlanetAmdusciaEQ.Name = "PlanetAmdusciaEQ"
+        Me.PlanetAmdusciaEQ.Size = New System.Drawing.Size(204, 22)
+        Me.PlanetAmdusciaEQ.Text = "Planet Amduscia EQ"
+        '
+        'PlanetLillipaEQ
+        '
+        Me.PlanetLillipaEQ.Checked = True
+        Me.PlanetLillipaEQ.CheckOnClick = True
+        Me.PlanetLillipaEQ.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.PlanetLillipaEQ.Name = "PlanetLillipaEQ"
+        Me.PlanetLillipaEQ.Size = New System.Drawing.Size(204, 22)
+        Me.PlanetLillipaEQ.Text = "Planet Lillipa EQ"
+        '
+        'PlanetNaberiusEQ
+        '
+        Me.PlanetNaberiusEQ.Checked = True
+        Me.PlanetNaberiusEQ.CheckOnClick = True
+        Me.PlanetNaberiusEQ.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.PlanetNaberiusEQ.Name = "PlanetNaberiusEQ"
+        Me.PlanetNaberiusEQ.Size = New System.Drawing.Size(204, 22)
+        Me.PlanetNaberiusEQ.Text = "Planet Naberius EQ"
+        '
+        'PrimaryMiningBase
+        '
+        Me.PrimaryMiningBase.Checked = True
+        Me.PrimaryMiningBase.CheckOnClick = True
+        Me.PrimaryMiningBase.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.PrimaryMiningBase.Name = "PrimaryMiningBase"
+        Me.PrimaryMiningBase.Size = New System.Drawing.Size(204, 22)
+        Me.PrimaryMiningBase.Text = "Primary Mining Base"
+        '
+        'SecondaryMiningBase
+        '
+        Me.SecondaryMiningBase.Checked = True
+        Me.SecondaryMiningBase.CheckOnClick = True
+        Me.SecondaryMiningBase.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.SecondaryMiningBase.Name = "SecondaryMiningBase"
+        Me.SecondaryMiningBase.Size = New System.Drawing.Size(204, 22)
+        Me.SecondaryMiningBase.Text = "Secondary Mining Base"
+        '
+        'ShopAreaConcert
+        '
+        Me.ShopAreaConcert.Checked = True
+        Me.ShopAreaConcert.CheckOnClick = True
+        Me.ShopAreaConcert.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ShopAreaConcert.Name = "ShopAreaConcert"
+        Me.ShopAreaConcert.Size = New System.Drawing.Size(204, 22)
+        Me.ShopAreaConcert.Text = "Shop Area Concert"
+        '
+        'TertiaryMiningBase
+        '
+        Me.TertiaryMiningBase.Checked = True
+        Me.TertiaryMiningBase.CheckOnClick = True
+        Me.TertiaryMiningBase.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.TertiaryMiningBase.Name = "TertiaryMiningBase"
+        Me.TertiaryMiningBase.Size = New System.Drawing.Size(204, 22)
+        Me.TertiaryMiningBase.Text = "Tertiary Mining Base"
+        '
+        'UrbanEQ
+        '
+        Me.UrbanEQ.Checked = True
+        Me.UrbanEQ.CheckOnClick = True
+        Me.UrbanEQ.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.UrbanEQ.Name = "UrbanEQ"
+        Me.UrbanEQ.Size = New System.Drawing.Size(204, 22)
+        Me.UrbanEQ.Text = "Urban EQ"
         '
         'tsmSelectMonitor
         '
@@ -414,140 +550,14 @@ Partial Class Form1
         Me.tmrCheckforUpdates.Enabled = True
         Me.tmrCheckforUpdates.Interval = 3600000
         '
-        'PrimaryMiningBase
+        'ThePitchBlackProvince
         '
-        Me.PrimaryMiningBase.Checked = True
-        Me.PrimaryMiningBase.CheckOnClick = True
-        Me.PrimaryMiningBase.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.PrimaryMiningBase.Name = "PrimaryMiningBase"
-        Me.PrimaryMiningBase.Size = New System.Drawing.Size(197, 22)
-        Me.PrimaryMiningBase.Text = "Primary Mining Base"
-        '
-        'PlanetNaberiusEQ
-        '
-        Me.PlanetNaberiusEQ.Checked = True
-        Me.PlanetNaberiusEQ.CheckOnClick = True
-        Me.PlanetNaberiusEQ.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.PlanetNaberiusEQ.Name = "PlanetNaberiusEQ"
-        Me.PlanetNaberiusEQ.Size = New System.Drawing.Size(197, 22)
-        Me.PlanetNaberiusEQ.Text = "Planet Naberius EQ"
-        '
-        'PlanetLillipaEQ
-        '
-        Me.PlanetLillipaEQ.Checked = True
-        Me.PlanetLillipaEQ.CheckOnClick = True
-        Me.PlanetLillipaEQ.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.PlanetLillipaEQ.Name = "PlanetLillipaEQ"
-        Me.PlanetLillipaEQ.Size = New System.Drawing.Size(197, 22)
-        Me.PlanetLillipaEQ.Text = "Planet Lillipa EQ"
-        '
-        'PlanetAmdusciaEQ
-        '
-        Me.PlanetAmdusciaEQ.Checked = True
-        Me.PlanetAmdusciaEQ.CheckOnClick = True
-        Me.PlanetAmdusciaEQ.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.PlanetAmdusciaEQ.Name = "PlanetAmdusciaEQ"
-        Me.PlanetAmdusciaEQ.Size = New System.Drawing.Size(197, 22)
-        Me.PlanetAmdusciaEQ.Text = "Planet Amduscia EQ"
-        '
-        'MechaAwakening
-        '
-        Me.MechaAwakening.Checked = True
-        Me.MechaAwakening.CheckOnClick = True
-        Me.MechaAwakening.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.MechaAwakening.Name = "MechaAwakening"
-        Me.MechaAwakening.Size = New System.Drawing.Size(197, 22)
-        Me.MechaAwakening.Text = "Mecha Awakening"
-        '
-        'InterruptRankings
-        '
-        Me.InterruptRankings.Checked = True
-        Me.InterruptRankings.CheckOnClick = True
-        Me.InterruptRankings.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.InterruptRankings.Name = "InterruptRankings"
-        Me.InterruptRankings.Size = New System.Drawing.Size(197, 22)
-        Me.InterruptRankings.Text = "Interrupt Rankings"
-        '
-        'DarkerDen
-        '
-        Me.DarkerDen.Checked = True
-        Me.DarkerDen.CheckOnClick = True
-        Me.DarkerDen.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.DarkerDen.Name = "DarkerDen"
-        Me.DarkerDen.Size = New System.Drawing.Size(197, 22)
-        Me.DarkerDen.Text = "Darker Den"
-        '
-        'DarkFalzLoser
-        '
-        Me.DarkFalzLoser.Checked = True
-        Me.DarkFalzLoser.CheckOnClick = True
-        Me.DarkFalzLoser.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.DarkFalzLoser.Name = "DarkFalzLoser"
-        Me.DarkFalzLoser.Size = New System.Drawing.Size(197, 22)
-        Me.DarkFalzLoser.Text = "Dark Falz Loser"
-        '
-        'DarkFalzElder
-        '
-        Me.DarkFalzElder.Checked = True
-        Me.DarkFalzElder.CheckOnClick = True
-        Me.DarkFalzElder.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.DarkFalzElder.Name = "DarkFalzElder"
-        Me.DarkFalzElder.Size = New System.Drawing.Size(197, 22)
-        Me.DarkFalzElder.Text = "Dark Falz Elder"
-        '
-        'BeachWars2
-        '
-        Me.BeachWars2.Checked = True
-        Me.BeachWars2.CheckOnClick = True
-        Me.BeachWars2.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.BeachWars2.Name = "BeachWars2"
-        Me.BeachWars2.Size = New System.Drawing.Size(197, 22)
-        Me.BeachWars2.Text = "Beach Wars 2"
-        '
-        'BeckoningDarkness
-        '
-        Me.BeckoningDarkness.Checked = True
-        Me.BeckoningDarkness.CheckOnClick = True
-        Me.BeckoningDarkness.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.BeckoningDarkness.Name = "BeckoningDarkness"
-        Me.BeckoningDarkness.Size = New System.Drawing.Size(197, 22)
-        Me.BeckoningDarkness.Text = "Beckoning Darkness"
-        '
-        'UrbanEQ
-        '
-        Me.UrbanEQ.Checked = True
-        Me.UrbanEQ.CheckOnClick = True
-        Me.UrbanEQ.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.UrbanEQ.Name = "UrbanEQ"
-        Me.UrbanEQ.Size = New System.Drawing.Size(197, 22)
-        Me.UrbanEQ.Text = "Urban EQ"
-        '
-        'TertiaryMiningBase
-        '
-        Me.TertiaryMiningBase.Checked = True
-        Me.TertiaryMiningBase.CheckOnClick = True
-        Me.TertiaryMiningBase.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.TertiaryMiningBase.Name = "TertiaryMiningBase"
-        Me.TertiaryMiningBase.Size = New System.Drawing.Size(197, 22)
-        Me.TertiaryMiningBase.Text = "Tertiary Mining Base"
-        '
-        'ShopAreaConcert
-        '
-        Me.ShopAreaConcert.Checked = True
-        Me.ShopAreaConcert.CheckOnClick = True
-        Me.ShopAreaConcert.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ShopAreaConcert.Name = "ShopAreaConcert"
-        Me.ShopAreaConcert.Size = New System.Drawing.Size(197, 22)
-        Me.ShopAreaConcert.Text = "Shop Area Concert"
-        '
-        'SecondaryMiningBase
-        '
-        Me.SecondaryMiningBase.Checked = True
-        Me.SecondaryMiningBase.CheckOnClick = True
-        Me.SecondaryMiningBase.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.SecondaryMiningBase.Name = "SecondaryMiningBase"
-        Me.SecondaryMiningBase.Size = New System.Drawing.Size(197, 22)
-        Me.SecondaryMiningBase.Text = "Secondary Mining Base"
+        Me.ThePitchBlackProvince.Checked = True
+        Me.ThePitchBlackProvince.CheckOnClick = True
+        Me.ThePitchBlackProvince.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ThePitchBlackProvince.Name = "ThePitchBlackProvince"
+        Me.ThePitchBlackProvince.Size = New System.Drawing.Size(204, 22)
+        Me.ThePitchBlackProvince.Text = "The Pitch Black Province"
         '
         'Form1
         '
@@ -644,5 +654,6 @@ Partial Class Form1
     Friend WithEvents ShopAreaConcert As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TertiaryMiningBase As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UrbanEQ As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ThePitchBlackProvince As System.Windows.Forms.ToolStripMenuItem
 
 End Class

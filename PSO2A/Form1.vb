@@ -188,7 +188,6 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-        '[AIDA] will be fixed later
         If LoadSetting("Beckoning Darkness") <> "" Then BeckoningDarkness.Checked = LoadSetting("Beckoning Darkness")
         If LoadSetting("Beach Wars 2") <> "" Then BeachWars2.Checked = LoadSetting("Beach Wars 2")
         If LoadSetting("Dark Falz Elder") <> "" Then DarkFalzElder.Checked = LoadSetting("Dark Falz Elder")
@@ -204,6 +203,7 @@ Public Class Form1
         If LoadSetting("Shop Area Concert") <> "" Then ShopAreaConcert.Checked = LoadSetting("Shop Area Concert")
         If LoadSetting("Tertiary Mining Base") <> "" Then TertiaryMiningBase.Checked = LoadSetting("Tertiary Mining Base")
         If LoadSetting("Urban EQ") <> "" Then UrbanEQ.Checked = LoadSetting("Urban EQ")
+        If LoadSetting("ThePitchBlackProvince") <> "" Then ThePitchBlackProvince.Checked = LoadSetting("ThePitchBlackProvince")
 
         'Uncomment to continue on multi-monitor support
         'Dim numberofmonitors As Integer = Screen.AllScreens.Length
@@ -415,7 +415,7 @@ Public Class Form1
         End If
         If EQName = "アークス船団ＤＦ接近予告" Then
             EQName = "Dark Falz Elder"
-            EQText = "Emergency broadcast! Dark Falz is approaching the outlying regions of the ARKS fleet!"
+            EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
             EQPic = "http://arks-layer.com/twitter/images/pso2_528c064a37e63.png"
         End If
         If EQName = "森林　作戦予告" Then
@@ -469,13 +469,19 @@ Public Class Form1
         If EQName = "ショップエリア　ライブ予告" Then
             EQName = "Shop Area Concert"
             EQText = "We're holding a concert in the Shop Area soon! We hope to see everyone there!"
-            EQPic = ""
+            EQPic = "http://arks-layer.com/twitter/images/pso2_522c0d01ea0fd.png"
         End If
 
         If EQName = "地下坑道　作戦予告" Then
             EQName = "Mecha Awakening"
             EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Lillipan tunnels."
             EQPic = "http://arks-layer.com/twitter/images/pso2_51e3da03c6b16.png"
+        End If
+
+        If EQName = "白ノ領域　作戦予告" Then
+            EQName = "Pitch Black Province"
+            EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
+            EQPic = "http://arks-layer.com/twitter/images/pso2_5410a0fa4d83f.png"
         End If
 
 
@@ -494,6 +500,7 @@ Public Class Form1
         If EQName = "Shop Area Concert" And ShopAreaConcert.Checked = False Then Exit Sub
         If EQName = "Tertiary Mining Base" And TertiaryMiningBase.Checked = False Then Exit Sub
         If EQName = "Urban EQ" And UrbanEQ.Checked = False Then Exit Sub
+        If EQName = "Pitch Black Province" And ThePitchBlackProvince.Checked = False Then Exit Sub
 
         If Me.InvokeRequired Then
             Me.Invoke(New Action(Of String)(AddressOf ShowRecentEQs), Text)
@@ -858,5 +865,9 @@ SELECTFILE:
 
     Private Sub BeachWars2_Click(sender As Object, e As EventArgs) Handles BeachWars2.Click
         SaveSetting("Beach Wars 2", BeachWars2.Checked)
+    End Sub
+
+    Private Sub ThePitchBlackProvince_Click(sender As Object, e As EventArgs) Handles ThePitchBlackProvince.Click
+        SaveSetting("The Pitch Black Province", ThePitchBlackProvince.Checked)
     End Sub
 End Class
