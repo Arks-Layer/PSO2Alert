@@ -388,100 +388,106 @@ Public Class Form1
         If EQName = "第一採掘基地ダーカー接近予告" Then
             EQName = "Primary Mining Base"
             EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's primary mining base!"
-            EQPic = "http://arks-layer.com/twitter/images/pso2_52b21acd393ef.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54200c716794b.png"
         End If
         If EQName = "第二採掘基地ダーカー接近予告" Then
             EQName = "Secondary Mining Base"
             EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's secondary mining base!"
-            EQPic = "http://arks-layer.com/twitter/images/pso2_5330d2ea329a8.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254d12494a9.png"
         End If
 
         If EQName = "第三採掘基地ダーカー接近予告" Then
             EQName = "Tertiary Mining Base"
             EQText = "Emergency broadcast! Darkers are approaching the outlying regions of Lillipa's tertiary mining base!"
-            EQPic = "http://arks-layer.com/twitter/images/pso2_53c51723e69df.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254d34756a2.png"
         End If
 
         If EQName = "旧マザーシップ　作戦予告" Then
             EQName = "Beckoning Darkness"
             EQText = "Emergency broadcast! A darker-infested ARKS mothership is approaching the fleet. All ARKS, prepare for large-scale combat."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_53b500ffbc0dd.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254b027bcb4.png"
         End If
 
         If EQName = "アークス船団航行物体接近予告" Then
             EQName = "Dark Falz Loser"
             EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_536a76de8212f.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54200ca52c9c0.png"
         End If
         If EQName = "アークス船団ＤＦ接近予告" Then
             EQName = "Dark Falz Elder"
             EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
-            EQPic = "http://arks-layer.com/twitter/images/pso2_528c064a37e63.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254b11c83c2.png"
         End If
         If EQName = "森林　作戦予告" Then
             EQName = "Planet Naberius EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_51e3da34918fe.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
         End If
 
         If EQName = "惑星リリーパ　作戦予告" Then
             EQName = "Planet Lillipa EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_526120692499a.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+        End If
+
+        If EQName = "砂漠　作戦予告" Then
+            EQName = "Desert Guerrillas EQ"
+            EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
         End If
 
         If EQName = "惑星アムドゥスキア　作戦予告" Then
             EQName = "Planet Amduscia EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_51f2131743674.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
         End If
 
         If EQName = "浮遊大陸　作戦予告" Then
             EQName = "Planet Amduscia EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_51f2131743674.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
         End If
 
         If EQName = "インタラプトランキング予告" Then
             EQName = "Interrupt Rankings"
             EQText = "We will be holding Interrupt Rankings starting at the above time. Be sure to participate!"
-            EQPic = "http://arks-layer.com/twitter/images/pso2_52d1aa345df1b.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54200bc303586.png"
         End If
 
         If EQName = "惑星ウォパル　作戦予告" Then
             EQName = "Beach Wars 2"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_522abdfa29c25.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
         End If
 
         If EQName = "異常値観測宙域　一斉調査予告" Then
             EQName = "Darker Den"
             EQText = "The ARKS are preparing for a large-scale investigation of anomalous readings in deep space."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_5295bf1569c73.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54200c44e8d8b.png"
         End If
 
         If EQName = "アークス船団ダーカー接近予告" Then
             EQName = "Urban EQ"
             EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of the ARKS fleet!"
-            EQPic = "http://arks-layer.com/twitter/images/pso2_52da066592753.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54200c9706b65.png"
         End If
 
         If EQName = "ショップエリア　ライブ予告" Then
             EQName = "Shop Area Concert"
             EQText = "We're holding a concert in the Shop Area soon! We hope to see everyone there!"
-            EQPic = "http://arks-layer.com/twitter/images/pso2_522c0d01ea0fd.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_5425afb646808.png"
         End If
 
         If EQName = "地下坑道　作戦予告" Then
             EQName = "Mecha Awakening"
             EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Lillipan tunnels."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_51e3da03c6b16.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254bc3ce565.png"
         End If
 
         If EQName = "白ノ領域　作戦予告" Then
             EQName = "Pitch Black Province"
             EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
-            EQPic = "http://arks-layer.com/twitter/images/pso2_5410a0fa4d83f.png"
+            EQPic = "http://eq.arks-layer.com/img/pso2_542550515edf5.png"
         End If
 
 
@@ -533,7 +539,7 @@ Public Class Form1
             Application.DoEvents()
             lblEQText.Text = EQText
 
-            'ShowEQ("Ship 2", "", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", "http://arks-layer.com/twitter/images/pso2_51e3da03c6b16.png", "1", EQName)
+            'ShowEQ("Ship 2", "", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", "http://eq.arks-layer.com/img/pso2_51e3da03c6b16.png", "1", EQName)
             'Public Sub ShowEQ(ByRef Ship As String, EQText As String, StartTime As String, EndTime As String, EQImage As String, Version As String, EnglishName As String)
             lblTitle.Text = Ship & " " & EQName & " " & StartTime & "JST (" & EndTime
             If LoggingEnabled = True Then
