@@ -419,7 +419,7 @@ Public Class Form1
             EQPic = "http://eq.arks-layer.com/img/pso2_54254b11c83c2.png"
         End If
         If EQName = "森林　作戦予告" Then
-            EQName = "Planet Naberius EQ"
+            EQName = "Naberius: Forest EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
             EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
         End If
@@ -430,8 +430,14 @@ Public Class Form1
             EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
         End If
 
+        If EQName = "火山洞窟　作戦予告" Then
+            EQName = "Volcanic Caves"
+            EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
+            EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+        End If
+
         If EQName = "砂漠　作戦予告" Then
-            EQName = "Desert Guerrillas EQ"
+            EQName = "Lillipa: Desert EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
             EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
         End If
@@ -443,7 +449,7 @@ Public Class Form1
         End If
 
         If EQName = "浮遊大陸　作戦予告" Then
-            EQName = "Planet Amduscia EQ"
+            EQName = "Amduscia: F. Continent EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
             EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
         End If
@@ -455,7 +461,7 @@ Public Class Form1
         End If
 
         If EQName = "惑星ウォパル　作戦予告" Then
-            EQName = "Beach Wars 2"
+            EQName = "Planet Vopar EQ"
             EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
             EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
         End If
@@ -467,7 +473,7 @@ Public Class Form1
         End If
 
         If EQName = "アークス船団ダーカー接近予告" Then
-            EQName = "Urban EQ"
+            EQName = "ARKS Ship Urban EQ"
             EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of the ARKS fleet!"
             EQPic = "http://eq.arks-layer.com/img/pso2_54200c9706b65.png"
         End If
@@ -479,13 +485,13 @@ Public Class Form1
         End If
 
         If EQName = "地下坑道　作戦予告" Then
-            EQName = "Mecha Awakening"
+            EQName = "Lillipa: Subterranean Tunnels EQ"
             EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Lillipan tunnels."
             EQPic = "http://eq.arks-layer.com/img/pso2_54254bc3ce565.png"
         End If
 
         If EQName = "白ノ領域　作戦予告" Then
-            EQName = "Pitch Black Province"
+            EQName = "Harkotan: Shironia EQ"
             EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
             EQPic = "http://eq.arks-layer.com/img/pso2_542550515edf5.png"
         End If
