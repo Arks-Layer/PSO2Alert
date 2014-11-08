@@ -87,79 +87,79 @@ Public Class Form1
         Dim AMPM As String = ""
         Select Case EQHour
             Case 0
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "AM"
             Case 1
-                EQHourEST = 12
+                EQHourEST = 11
                 AMPM = "PM"
             Case 2
-                EQHourEST = 1
+                EQHourEST = 12
                 AMPM = "PM"
             Case 3
-                EQHourEST = 2
+                EQHourEST = 1
                 AMPM = "PM"
             Case 4
-                EQHourEST = 3
+                EQHourEST = 2
                 AMPM = "PM"
             Case 5
-                EQHourEST = 4
+                EQHourEST = 3
                 AMPM = "PM"
             Case 6
-                EQHourEST = 5
+                EQHourEST = 4
                 AMPM = "PM"
             Case 7
-                EQHourEST = 6
+                EQHourEST = 5
                 AMPM = "PM"
             Case 8
-                EQHourEST = 7
+                EQHourEST = 6
                 AMPM = "PM"
             Case 9
-                EQHourEST = 8
+                EQHourEST = 7
                 AMPM = "PM"
             Case 10
-                EQHourEST = 9
+                EQHourEST = 8
                 AMPM = "PM"
             Case 11
-                EQHourEST = 10
+                EQHourEST = 9
                 AMPM = "PM"
             Case 12
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "PM"
             Case 13
-                EQHourEST = 12
+                EQHourEST = 11
                 AMPM = "AM"
             Case 14
-                EQHourEST = 1
+                EQHourEST = 12
                 AMPM = "AM"
             Case 15
-                EQHourEST = 2
+                EQHourEST = 1
                 AMPM = "AM"
             Case 16
-                EQHourEST = 3
+                EQHourEST = 2
                 AMPM = "AM"
             Case 17
-                EQHourEST = 4
+                EQHourEST = 3
                 AMPM = "AM"
             Case 18
-                EQHourEST = 5
+                EQHourEST = 4
                 AMPM = "AM"
             Case 19
-                EQHourEST = 6
+                EQHourEST = 5
                 AMPM = "AM"
             Case 20
-                EQHourEST = 7
+                EQHourEST = 6
                 AMPM = "AM"
             Case 21
-                EQHourEST = 8
+                EQHourEST = 7
                 AMPM = "AM"
             Case 22
-                EQHourEST = 9
+                EQHourEST = 8
                 AMPM = "AM"
             Case 23
-                EQHourEST = 10
+                EQHourEST = 9
                 AMPM = "AM"
             Case 24
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "PM"
             Case Else
                 EQHourEST = 99
@@ -180,7 +180,7 @@ Public Class Form1
                     NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
                 End If
             End If
-            ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", EQName)
+            ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EST)", EQName)
             SaveSetting("LastEQ", CurrentEQOriginal)
         End If
         SaveSetting("LastEQ", CurrentEQOriginal)
@@ -273,79 +273,79 @@ Public Class Form1
         Dim AMPM As String = ""
         Select Case EQHour
             Case 0
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "AM"
             Case 1
-                EQHourEST = 12
+                EQHourEST = 11
                 AMPM = "PM"
             Case 2
-                EQHourEST = 1
+                EQHourEST = 12
                 AMPM = "PM"
             Case 3
-                EQHourEST = 2
+                EQHourEST = 1
                 AMPM = "PM"
             Case 4
-                EQHourEST = 3
+                EQHourEST = 2
                 AMPM = "PM"
             Case 5
-                EQHourEST = 4
+                EQHourEST = 3
                 AMPM = "PM"
             Case 6
-                EQHourEST = 5
+                EQHourEST = 4
                 AMPM = "PM"
             Case 7
-                EQHourEST = 6
+                EQHourEST = 5
                 AMPM = "PM"
             Case 8
-                EQHourEST = 7
+                EQHourEST = 6
                 AMPM = "PM"
             Case 9
-                EQHourEST = 8
+                EQHourEST = 7
                 AMPM = "PM"
             Case 10
-                EQHourEST = 9
+                EQHourEST = 8
                 AMPM = "PM"
             Case 11
-                EQHourEST = 10
+                EQHourEST = 9
                 AMPM = "PM"
             Case 12
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "PM"
             Case 13
-                EQHourEST = 12
+                EQHourEST = 11
                 AMPM = "AM"
             Case 14
-                EQHourEST = 1
+                EQHourEST = 12
                 AMPM = "AM"
             Case 15
-                EQHourEST = 2
+                EQHourEST = 1
                 AMPM = "AM"
             Case 16
-                EQHourEST = 3
+                EQHourEST = 2
                 AMPM = "AM"
             Case 17
-                EQHourEST = 4
+                EQHourEST = 3
                 AMPM = "AM"
             Case 18
-                EQHourEST = 5
+                EQHourEST = 4
                 AMPM = "AM"
             Case 19
-                EQHourEST = 6
+                EQHourEST = 5
                 AMPM = "AM"
             Case 20
-                EQHourEST = 7
+                EQHourEST = 6
                 AMPM = "AM"
             Case 21
-                EQHourEST = 8
+                EQHourEST = 7
                 AMPM = "AM"
             Case 22
-                EQHourEST = 9
+                EQHourEST = 8
                 AMPM = "AM"
             Case 23
-                EQHourEST = 10
+                EQHourEST = 9
                 AMPM = "AM"
             Case 24
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "PM"
             Case Else
                 EQHourEST = 99
@@ -366,7 +366,7 @@ Public Class Form1
                     NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
                 End If
             End If
-            ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", EQName)
+            ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EST)", EQName)
             SaveSetting("LastEQ", CurrentEQOriginal)
         End If
     End Sub
@@ -545,7 +545,7 @@ Public Class Form1
             Application.DoEvents()
             lblEQText.Text = EQText
 
-            'ShowEQ("Ship 2", "", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", "http://eq.arks-layer.com/img/pso2_51e3da03c6b16.png", "1", EQName)
+            'ShowEQ("Ship 2", "", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EST)", "http://eq.arks-layer.com/img/pso2_51e3da03c6b16.png", "1", EQName)
             'Public Sub ShowEQ(ByRef Ship As String, EQText As String, StartTime As String, EndTime As String, EQImage As String, Version As String, EnglishName As String)
             lblTitle.Text = Ship & " " & EQName & " " & StartTime & "JST (" & EndTime
             If LoggingEnabled = True Then
@@ -611,79 +611,79 @@ Public Class Form1
         Dim AMPM As String = ""
         Select Case EQHour
             Case 0
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "AM"
             Case 1
-                EQHourEST = 12
+                EQHourEST = 11
                 AMPM = "PM"
             Case 2
-                EQHourEST = 1
+                EQHourEST = 12
                 AMPM = "PM"
             Case 3
-                EQHourEST = 2
+                EQHourEST = 1
                 AMPM = "PM"
             Case 4
-                EQHourEST = 3
+                EQHourEST = 2
                 AMPM = "PM"
             Case 5
-                EQHourEST = 4
+                EQHourEST = 3
                 AMPM = "PM"
             Case 6
-                EQHourEST = 5
+                EQHourEST = 4
                 AMPM = "PM"
             Case 7
-                EQHourEST = 6
+                EQHourEST = 5
                 AMPM = "PM"
             Case 8
-                EQHourEST = 7
+                EQHourEST = 6
                 AMPM = "PM"
             Case 9
-                EQHourEST = 8
+                EQHourEST = 7
                 AMPM = "PM"
             Case 10
-                EQHourEST = 9
+                EQHourEST = 8
                 AMPM = "PM"
             Case 11
-                EQHourEST = 10
+                EQHourEST = 9
                 AMPM = "PM"
             Case 12
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "PM"
             Case 13
-                EQHourEST = 12
+                EQHourEST = 11
                 AMPM = "AM"
             Case 14
-                EQHourEST = 1
+                EQHourEST = 12
                 AMPM = "AM"
             Case 15
-                EQHourEST = 2
+                EQHourEST = 1
                 AMPM = "AM"
             Case 16
-                EQHourEST = 3
+                EQHourEST = 2
                 AMPM = "AM"
             Case 17
-                EQHourEST = 4
+                EQHourEST = 3
                 AMPM = "AM"
             Case 18
-                EQHourEST = 5
+                EQHourEST = 4
                 AMPM = "AM"
             Case 19
-                EQHourEST = 6
+                EQHourEST = 5
                 AMPM = "AM"
             Case 20
-                EQHourEST = 7
+                EQHourEST = 6
                 AMPM = "AM"
             Case 21
-                EQHourEST = 8
+                EQHourEST = 7
                 AMPM = "AM"
             Case 22
-                EQHourEST = 9
+                EQHourEST = 8
                 AMPM = "AM"
             Case 23
-                EQHourEST = 10
+                EQHourEST = 9
                 AMPM = "AM"
             Case 24
-                EQHourEST = 11
+                EQHourEST = 10
                 AMPM = "PM"
             Case Else
                 EQHourEST = 99
@@ -694,8 +694,8 @@ Public Class Form1
         Dim EQText As String = ""
         Dim EQPic As String = ""
         EQName = EQName.Replace(vbCr, "").Replace(vbLf, "")
-        ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)", EQName)
-        'SendMessage("[EQ Notice] " & EQName & " at " & EQTime & "JST (" & EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EDT)")
+        ShowEQ("Ship 2", EQTime, EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EST)", EQName)
+        'SendMessage("[EQ Notice] " & EQName & " at " & EQTime & "JST (" & EQHourEST & ":" & EQMinutes(1).Replace("分", "") & AMPM & " EST)")
     End Sub
 
     Private Sub tsmShowRecentEQ_Click(sender As Object, e As EventArgs) Handles tsmShowRecentEQ.Click
