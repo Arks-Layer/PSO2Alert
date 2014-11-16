@@ -310,7 +310,7 @@ Public Class Form1
             picEQImage.ImageLocation = EQPic
             Application.DoEvents()
             lblEQText.Text = EQText
-            lblTitle.Text = Ship & " " & EQName & " " & JPTime & "JST (" & LocalTime.Replace(" LocalTime", "")
+            lblTitle.Text = Ship & " " & EQName & " " & JPTime & "JST (" & LocalTime
 
             ' TODO: As of yet this never gets called because nothing sets LoggingEnabled
             If LoggingEnabled = True Then
@@ -357,7 +357,7 @@ Public Class Form1
         Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
         Dim EQName = CurrentEQOriginal.Split("】"c)(1).Replace(vbCr, "").Replace(vbLf, "")
 
-        ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t") & " LocalTime)", EQName)
+        ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t") & ")", EQName)
     End Sub
 
     Private Sub tsmShowRecentEQ_Click(sender As Object, e As EventArgs) Handles tsmShowRecentEQ.Click
