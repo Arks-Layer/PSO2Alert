@@ -310,7 +310,7 @@ Public Class Form1
             picEQImage.ImageLocation = EQPic
             Application.DoEvents()
             lblEQText.Text = EQText
-            lblTitle.Text = Ship & " " & EQName & " " & JPTime & "JST (" & LocalTime
+            lblTitle.Text = Ship & " " & EQName & " " & JPTime & "JST (" & LocalTime.Replace(" LocalTime", "")
 
             ' TODO: As of yet this never gets called because nothing sets LoggingEnabled
             If LoggingEnabled = True Then
