@@ -44,6 +44,7 @@ Partial Class Form1
         Me.SecondaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShopAreaConcert = New System.Windows.Forms.ToolStripMenuItem()
         Me.TertiaryMiningBase = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ThePitchBlackProvince = New System.Windows.Forms.ToolStripMenuItem()
         Me.UrbanEQ = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmSelectMonitor = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrimaryMonitorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -88,7 +89,6 @@ Partial Class Form1
         Me.tmrDisplay = New System.Windows.Forms.Timer(Me.components)
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.tmrCheckforUpdates = New System.Windows.Forms.Timer(Me.components)
-        Me.ThePitchBlackProvince = New System.Windows.Forms.ToolStripMenuItem()
         Me.traymenu.SuspendLayout()
         CType(Me.picEQImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -258,6 +258,15 @@ Partial Class Form1
         Me.TertiaryMiningBase.Name = "TertiaryMiningBase"
         Me.TertiaryMiningBase.Size = New System.Drawing.Size(204, 22)
         Me.TertiaryMiningBase.Text = "Tertiary Mining Base"
+        '
+        'ThePitchBlackProvince
+        '
+        Me.ThePitchBlackProvince.Checked = True
+        Me.ThePitchBlackProvince.CheckOnClick = True
+        Me.ThePitchBlackProvince.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ThePitchBlackProvince.Name = "ThePitchBlackProvince"
+        Me.ThePitchBlackProvince.Size = New System.Drawing.Size(204, 22)
+        Me.ThePitchBlackProvince.Text = "The Pitch Black Province"
         '
         'UrbanEQ
         '
@@ -549,15 +558,6 @@ Partial Class Form1
         '
         Me.tmrCheckforUpdates.Enabled = True
         Me.tmrCheckforUpdates.Interval = 3600000
-        '
-        'ThePitchBlackProvince
-        '
-        Me.ThePitchBlackProvince.Checked = True
-        Me.ThePitchBlackProvince.CheckOnClick = True
-        Me.ThePitchBlackProvince.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ThePitchBlackProvince.Name = "ThePitchBlackProvince"
-        Me.ThePitchBlackProvince.Size = New System.Drawing.Size(204, 22)
-        Me.ThePitchBlackProvince.Text = "The Pitch Black Province"
         '
         'Form1
         '
