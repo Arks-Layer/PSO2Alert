@@ -4,7 +4,7 @@
     Public Shared Function JapanTimeToLocal(hour As Integer, minutes As Integer, localTime As TimeZoneInfo) As DateTime
         Dim currentDate = DateTime.Now
         Dim selectedTimeZone = TimeZoneInfo.Local
-        Dim EQDate = New DateTime(currentDate.Year, currentDate.Day, currentDate.Hour, hour, minutes, 0)
+        Dim EQDate = New DateTime(currentDate.Year, currentDate.Month, currentDate.Day, hour, minutes, 0)
         Dim localEQDateIn = TimeZoneInfo.ConvertTime(EQDate, JPTimeInfo, selectedTimeZone)
 
         If (selectedTimeZone.SupportsDaylightSavingTime AndAlso selectedTimeZone.IsDaylightSavingTime(localEQDateIn)) Then
