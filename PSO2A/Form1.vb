@@ -92,6 +92,7 @@ Public Class Form1
             End If
 
             Dim EQName = CurrentEQOriginal.Split("】"c)(1).Replace(vbCr, "").Replace(vbLf, "")
+
             ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t"), EQName)
             RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
         End If
@@ -177,8 +178,8 @@ Public Class Form1
     Public Sub ShowEQ(ByRef Ship As String, JPTime As String, LocalTime As String, EQName As String)
         Dim EQText As String = ""
         Dim EQPic As String = ""
-
         Select Case EQName
+
             Case "第一採掘基地ダーカー接近予告"
                 If Not PrimaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.PrimaryMiningBase
@@ -207,11 +208,19 @@ Public Class Form1
                 EQName = RegKey.DarkFalzLoser
                 EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54200ca52c9c0.png"
+
             Case "アークス船団ＤＦ接近予告"
                 If Not DarkFalzElder.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzElder
                 EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
                 EQPic = "http://eq.arks-layer.com/img/pso2_54254b11c83c2.png"
+
+            Case "ＤＦ【巨躯"
+                If Not DarkFalzElder.Checked Then Exit Sub
+                EQName = RegKey.DarkFalzElder
+                EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
+                EQPic = "http://eq.arks-layer.com/img/pso2_54254b11c83c2.png"
+
             Case "森林　作戦予告"
                 EQName = "Naberius: Forest EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
