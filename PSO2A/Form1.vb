@@ -185,6 +185,7 @@ Public Class Form1
                 EQName = RegKey.PrimaryMiningBase
                 EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's primary mining base!"
                 EQPic = "http://eq.arks-layer.com/img/pso2_54200c716794b.png"
+
             Case "第二採掘基地ダーカー接近予告"
                 If Not SecondaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.SecondaryMiningBase
@@ -209,13 +210,7 @@ Public Class Form1
                 EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54200ca52c9c0.png"
 
-            Case "アークス船団ＤＦ接近予告"
-                If Not DarkFalzElder.Checked Then Exit Sub
-                EQName = RegKey.DarkFalzElder
-                EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254b11c83c2.png"
-
-            Case "ＤＦ【巨躯"
+            Case "アークス船団ＤＦ接近予告", "ＤＦ【巨躯"
                 If Not DarkFalzElder.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzElder
                 EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
