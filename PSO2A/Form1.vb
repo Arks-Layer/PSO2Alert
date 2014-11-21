@@ -204,7 +204,8 @@ Public Class Form1
                 EQText = "Emergency broadcast! A darker-infested ARKS mothership is approaching the fleet. All ARKS, prepare for large-scale combat."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54254b027bcb4.png"
 
-            Case "アークス船団航行物体接近予告"
+                'TODO: Remove "ＤＦ【敗者" but not now so it won't break if something goes wrong
+            Case "アークス船団航行物体接近予告", "ＤＦ【敗者】接近予告", "ＤＦ【敗者"
                 If Not DarkFalzLoser.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzLoser
                 EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
