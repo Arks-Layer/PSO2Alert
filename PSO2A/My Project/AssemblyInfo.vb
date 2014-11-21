@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("PSO2 Alert")> 
 <Assembly: AssemblyDescription("A Desktop EQ Notification System!")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyCompany("Arks-Layer")> 
 <Assembly: AssemblyProduct("")> 
 <Assembly: AssemblyCopyright("Copyright Arks-Layer ©  2014")> 
 <Assembly: AssemblyTrademark("")> 
