@@ -91,7 +91,7 @@ Public Class Form1
                 End If
             End If
 
-            Dim EQName = CurrentEQOriginal.Split("】"c)(1).Replace(vbCr, "").Replace(vbLf, "")
+            Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
 
             ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t"), EQName)
             RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
@@ -155,7 +155,7 @@ Public Class Form1
         Dim tempEQTime As String() = CurrentEQ.Split("時"c)
         Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
 
-        Dim EQName = CurrentEQOriginal.Split("】"c)(1).Replace(vbCr, "").Replace(vbLf, "")
+        Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
 
         If RegKey.GetValue(Of String)(RegKey.LastEQ) <> CurrentEQOriginal Then
             If RegKey.GetValue(Of String)(RegKey.PlaySound) = "Yes" Then
@@ -210,7 +210,8 @@ Public Class Form1
                 EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54200ca52c9c0.png"
 
-            Case "アークス船団ＤＦ接近予告", "ＤＦ【巨躯"
+                'TODO: Remove "ＤＦ【巨躯" but not now so it won't break if something goes wrong
+            Case "アークス船団ＤＦ接近予告", "ＤＦ【巨躯", "ＤＦ【巨躯】接近予告"
                 If Not DarkFalzElder.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzElder
                 EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
@@ -359,7 +360,7 @@ Public Class Form1
         Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
         Dim tempEQTime As String() = CurrentEQ.Split("時"c)
         Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
-        Dim EQName = CurrentEQOriginal.Split("】"c)(1).Replace(vbCr, "").Replace(vbLf, "")
+        Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
 
         ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t") & ")", EQName)
     End Sub
