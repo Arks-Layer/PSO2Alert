@@ -141,7 +141,7 @@ Public Class Form1
         Me.Opacity = 0
         NotifyIcon1.Visible = True
         tsmVersion.Text = "PSO2 Alert v" & My.Application.Info.Version.ToString
-        NotifyIcon1.ShowBalloonTip(7000, "", "PSO2 Alert v" & My.Application.Info.Version.ToString & " is now ready and waiting for EQ alerts", ToolTipIcon.Info)
+        NotifyIcon1.ShowBalloonTip(7001, "", "PSO2 Alert v" & My.Application.Info.Version.ToString & " is now ready and waiting for EQ alerts", ToolTipIcon.Info)
         ThreadPool.QueueUserWorkItem(AddressOf InitialEQCheck, Nothing)
     End Sub
 
