@@ -218,8 +218,24 @@ Public Class Form1
                 EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
                 EQPic = "http://eq.arks-layer.com/img/pso2_54254b11c83c2.png"
 
+            Case "惑星ナベリウス 作戦予告"
+                If Not PlanetNaberiusEQ.Checked Then Exit Sub
+                EQName = RegKey.PlanetNaberiusEQ
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
+                EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+
             Case "森林　作戦予告"
                 EQName = "Naberius: Forest EQ"
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
+                EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
+
+            Case "凍土　作戦予告"
+                EQName = "Naberius: Tundra EQ"
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
+                EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
+
+            Case "遺跡 作戦予告"
+                EQName = "Naberius: Ruins EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
 
@@ -229,6 +245,7 @@ Public Class Form1
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
 
+
             Case "火山洞窟　作戦予告"
                 EQName = "Volcanic Caves"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
@@ -236,6 +253,11 @@ Public Class Form1
 
             Case "砂漠　作戦予告"
                 EQName = "Lillipa: Desert EQ"
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
+                EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+
+            Case "採掘場跡　作戦予告"
+                EQName = "Lillipa: Quarry EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
 
@@ -250,6 +272,11 @@ Public Class Form1
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
                 EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
 
+            Case "龍祭壇　作戦予告"
+                EQName = "Amduscia: Sanctum EQ"
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
+                EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
+
             Case "インタラプトランキング予告"
                 If Not InterruptRankings.Checked Then Exit Sub
                 EQName = RegKey.InterruptRankings
@@ -258,6 +285,21 @@ Public Class Form1
 
             Case "惑星ウォパル　作戦予告"
                 EQName = "Planet Vopar EQ"
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
+                EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
+
+            Case "海岸　作戦予告"
+                EQName = "Vopar: Coast EQ"
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
+                EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
+
+            Case "海底 作戦予告"
+                EQName = "Vopar: Seabed EQ"
+                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
+                EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
+
+            Case "浮上施設　作戦予告"
+                EQName = "Vopar: Floating Facility EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
                 EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
 
@@ -285,6 +327,11 @@ Public Class Form1
 
             Case "白ノ領域　作戦予告"
                 EQName = "Harkotan: Shironia EQ"
+                EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
+                EQPic = "http://eq.arks-layer.com/img/pso2_542550515edf5.png"
+
+            Case "惑星ハルコタン 作戦予告"
+                EQName = "Planet Harkotan EQ"
                 EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
                 EQPic = "http://eq.arks-layer.com/img/pso2_542550515edf5.png"
         End Select
