@@ -30,6 +30,7 @@ Partial Class Form1
         Me.traymenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.tsmVersion = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmSelectEQs = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AttackOnMagatsu = New System.Windows.Forms.ToolStripMenuItem()
         Me.BeachWars2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.BeckoningDarkness = New System.Windows.Forms.ToolStripMenuItem()
         Me.DarkFalzElder = New System.Windows.Forms.ToolStripMenuItem()
@@ -118,7 +119,7 @@ Partial Class Form1
         '
         Me.traymenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmVersion, Me.tsmSelectEQs, Me.tsmSelectMonitor, Me.tsmStartWithWindows, Me.tsmLogin, Me.tsmReportEQ, Me.ToolStripMenuItem1, Me.tsmSound, Me.tsmShowRecentEQ, Me.tscShip, Me.tsmExit, Me.tsmDebugShowEQ})
         Me.traymenu.Name = "traymenu"
-        Me.traymenu.Size = New System.Drawing.Size(191, 295)
+        Me.traymenu.Size = New System.Drawing.Size(191, 273)
         '
         'tsmVersion
         '
@@ -128,10 +129,19 @@ Partial Class Form1
         '
         'tsmSelectEQs
         '
-        Me.tsmSelectEQs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BeachWars2, Me.BeckoningDarkness, Me.DarkFalzElder, Me.DarkFalzLoser, Me.DarkerDen, Me.InterruptRankings, Me.MechaAwakening, Me.PlanetAmdusciaEQ, Me.PlanetLillipaEQ, Me.PlanetNaberiusEQ, Me.PrimaryMiningBase, Me.SecondaryMiningBase, Me.ShopAreaConcert, Me.TertiaryMiningBase, Me.ThePitchBlackProvince, Me.UrbanEQ})
+        Me.tsmSelectEQs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AttackOnMagatsu, Me.BeachWars2, Me.BeckoningDarkness, Me.DarkFalzElder, Me.DarkFalzLoser, Me.DarkerDen, Me.InterruptRankings, Me.MechaAwakening, Me.PlanetAmdusciaEQ, Me.PlanetLillipaEQ, Me.PlanetNaberiusEQ, Me.PrimaryMiningBase, Me.SecondaryMiningBase, Me.ShopAreaConcert, Me.TertiaryMiningBase, Me.ThePitchBlackProvince, Me.UrbanEQ})
         Me.tsmSelectEQs.Name = "tsmSelectEQs"
         Me.tsmSelectEQs.Size = New System.Drawing.Size(190, 22)
         Me.tsmSelectEQs.Text = "Show these EQs"
+        '
+        'AttackOnMagatsu
+        '
+        Me.AttackOnMagatsu.Checked = True
+        Me.AttackOnMagatsu.CheckOnClick = True
+        Me.AttackOnMagatsu.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.AttackOnMagatsu.Name = "AttackOnMagatsu"
+        Me.AttackOnMagatsu.Size = New System.Drawing.Size(204, 22)
+        Me.AttackOnMagatsu.Text = "Attack on Magatsu"
         '
         'BeachWars2
         '
@@ -655,5 +665,6 @@ Partial Class Form1
     Friend WithEvents TertiaryMiningBase As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UrbanEQ As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ThePitchBlackProvince As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AttackOnMagatsu As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -73,29 +73,40 @@ Public Class Form1
     End Sub
 
     Private Sub InitialEQCheck(state As Object)
-        On Error Resume Next
         If RegKey.GetValue(Of String)(RegKey.ShipToQuery) <> "Ship02" Then Exit Sub
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
         Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
-        Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
-        Dim tempEQTime As String() = CurrentEQ.Split("時"c)
-        Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
+        Try
 
-        If RegKey.GetValue(Of String)(RegKey.LastEQ) <> CurrentEQOriginal Then
-            If RegKey.GetValue(Of String)(RegKey.PlaySound) = "Yes" Then
-                If File.Exists(RegKey.GetValue(Of String)(RegKey.WAVFile)) = True Then
-                    My.Computer.Audio.Play(RegKey.GetValue(Of String)(RegKey.WAVFile), AudioPlayMode.Background)
-                Else
-                    NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
-                End If
+            If CurrentEQOriginal = "" Then
+                RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+                NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
+                Exit Sub
             End If
+            Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
+            Dim tempEQTime As String() = CurrentEQ.Split("時"c)
+            Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
 
-            Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
+            If RegKey.GetValue(Of String)(RegKey.LastEQ) <> CurrentEQOriginal Then
+                If RegKey.GetValue(Of String)(RegKey.PlaySound) = "Yes" Then
+                    If File.Exists(RegKey.GetValue(Of String)(RegKey.WAVFile)) = True Then
+                        My.Computer.Audio.Play(RegKey.GetValue(Of String)(RegKey.WAVFile), AudioPlayMode.Background)
+                    Else
+                        NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
+                    End If
+                End If
 
-            ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t"), EQName)
+                Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
+
+                ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t"), EQName)
+                RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            End If
+        Catch ex As Exception
             RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
-        End If
+            NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
+            Exit Sub
+        End Try
         RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
     End Sub
 
@@ -116,6 +127,7 @@ Public Class Form1
         If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.TertiaryMiningBase)) Then TertiaryMiningBase.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.TertiaryMiningBase))
         If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.UrbanEQ)) Then UrbanEQ.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.UrbanEQ))
         If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.ThePitchBlackProvince)) Then ThePitchBlackProvince.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.ThePitchBlackProvince))
+        If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.AttackonMagatsu)) Then AttackOnMagatsu.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.AttackonMagatsu))
 
         'Uncomment to continue on multi-monitor support
         'Dim numberofmonitors As Integer = Screen.AllScreens.Length
@@ -146,11 +158,18 @@ Public Class Form1
     End Sub
 
     Private Sub CheckForEQs1(state As Object)
-        On Error Resume Next
         If RegKey.GetValue(Of String)(RegKey.ShipToQuery) <> "Ship02" Then Exit Sub
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
         Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
+        If RegKey.GetValue(Of String)(RegKey.LastEQ) = CurrentEQOriginal Then Exit Sub
+        Try
+
+        If CurrentEQOriginal = "" Then
+            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
+            Exit Sub
+        End If
         Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
         Dim tempEQTime As String() = CurrentEQ.Split("時"c)
         Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
@@ -168,7 +187,12 @@ Public Class Form1
 
             ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t"), EQName)
             RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
-        End If
+            End If
+        Catch ex As Exception
+            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
+            Exit Sub
+        End Try
     End Sub
 
     Private Sub tmrCheck_Tick(sender As Object, e As EventArgs) Handles tmrCheck.Tick
@@ -179,6 +203,12 @@ Public Class Form1
         Dim EQText As String = ""
         Dim EQPic As String = ""
         Select Case EQName
+
+            Case "『禍津』出現予告"
+                If Not AttackonMagatsu.Checked Then Exit Sub
+                EQName = RegKey.AttackonMagatsu
+                EQText = "Emergency broadcast! Magatsu is approaching the outlying region of Shironia!"
+                EQPic = "http://eq.arks-layer.com/img/magatsu.png"
 
             Case "第一採掘基地ダーカー接近予告"
                 If Not PrimaryMiningBase.Checked Then Exit Sub
@@ -405,12 +435,23 @@ Public Class Form1
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
         Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
-        Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
-        Dim tempEQTime As String() = CurrentEQ.Split("時"c)
-        Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
-        Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
+        Try
+            If CurrentEQOriginal = "" Then
+                RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+                NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
+                Exit Sub
+            End If
+            Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
+            Dim tempEQTime As String() = CurrentEQ.Split("時"c)
+            Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
+            Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
 
-        ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t") & ")", EQName)
+            ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t") & ")", EQName)
+        Catch ex As Exception
+            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
+            Exit Sub
+        End Try
     End Sub
 
     Private Sub tsmShowRecentEQ_Click(sender As Object, e As EventArgs) Handles tsmShowRecentEQ.Click
@@ -602,5 +643,9 @@ Public Class Form1
 
     Private Sub ThePitchBlackProvince_Click(sender As Object, e As EventArgs) Handles ThePitchBlackProvince.Click
         RegKey.SetValue(RegKey.ThePitchBlackProvince, ThePitchBlackProvince.Checked)
+    End Sub
+
+    Private Sub AttackOnMagatsu_Click(sender As Object, e As EventArgs) Handles AttackOnMagatsu.Click
+        RegKey.SetValue(RegKey.AttackonMagatsu, AttackOnMagatsu.Checked)
     End Sub
 End Class

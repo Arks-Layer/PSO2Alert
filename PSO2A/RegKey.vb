@@ -20,6 +20,7 @@ Public Class RegKey
     Public Const StartWithWindows = "StartWithWindows"
     Public Const TertiaryMiningBase = "Tertiary Mining Base"
     Public Const ThePitchBlackProvince = "The Pitch Black Province"
+    Public Const AttackonMagatsu = "Attack on Magatsu"
     Public Const UrbanEQ = "Urban EQ"
     Public Const WAVFile = "WAVFile"
 
