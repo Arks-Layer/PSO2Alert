@@ -76,8 +76,8 @@ Public Class Form1
         If RegKey.GetValue(Of String)(RegKey.ShipToQuery) <> "Ship02" Then Exit Sub
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
-        Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
         Try
+            Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
 
             If CurrentEQOriginal = "" Then
                 RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
@@ -103,11 +103,11 @@ Public Class Form1
                 RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
             End If
         Catch ex As Exception
-            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            RegKey.SetValue(RegKey.LastEQ, "Broken")
             NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
             Exit Sub
         End Try
-        RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+        RegKey.SetValue(RegKey.LastEQ, download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt"))
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -161,35 +161,36 @@ Public Class Form1
         If RegKey.GetValue(Of String)(RegKey.ShipToQuery) <> "Ship02" Then Exit Sub
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
-        Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
-        If RegKey.GetValue(Of String)(RegKey.LastEQ) = CurrentEQOriginal Then Exit Sub
         Try
+            Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
+            If RegKey.GetValue(Of String)(RegKey.LastEQ) = CurrentEQOriginal Then Exit Sub
 
-        If CurrentEQOriginal = "" Then
-            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
-            NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
-            Exit Sub
-        End If
-        Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
-        Dim tempEQTime As String() = CurrentEQ.Split("時"c)
-        Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
-
-        Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
-
-        If RegKey.GetValue(Of String)(RegKey.LastEQ) <> CurrentEQOriginal Then
-            If RegKey.GetValue(Of String)(RegKey.PlaySound) = "Yes" Then
-                If File.Exists(RegKey.GetValue(Of String)(RegKey.WAVFile)) = True Then
-                    My.Computer.Audio.Play(RegKey.GetValue(Of String)(RegKey.WAVFile), AudioPlayMode.Background)
-                Else
-                    NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
-                End If
+            If CurrentEQOriginal = "" Then
+                RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+                NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
+                Exit Sub
             End If
+            Dim CurrentEQ = CurrentEQOriginal.Remove(CurrentEQOriginal.IndexOf("分"c)).Substring(CurrentEQOriginal.IndexOf(" "c))
+            Dim tempEQTime As String() = CurrentEQ.Split("時"c)
+            Dim localEQDateIn = Helper.JapanTimeToLocal(Convert.ToInt32(tempEQTime(0)), Convert.ToInt32(tempEQTime(1)), localTimeZone)
 
-            ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t"), EQName)
-            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            Dim EQName = CurrentEQOriginal.Substring(CurrentEQOriginal.IndexOf("】"c) + 1)
+
+            If RegKey.GetValue(Of String)(RegKey.LastEQ) <> CurrentEQOriginal Then
+                If RegKey.GetValue(Of String)(RegKey.PlaySound) = "Yes" Then
+                    If File.Exists(RegKey.GetValue(Of String)(RegKey.WAVFile)) = True Then
+                        My.Computer.Audio.Play(RegKey.GetValue(Of String)(RegKey.WAVFile), AudioPlayMode.Background)
+                    Else
+                        NotifyIcon1.ShowBalloonTip(7000, "PSO2 Alert", "WAV file not found!", ToolTipIcon.Info)
+                    End If
+                End If
+
+                ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t"), EQName)
+                RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
             End If
         Catch ex As Exception
-            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            If RegKey.GetValue(Of String)(RegKey.LastEQ) = "Broken" Then Exit Sub
+            RegKey.SetValue(RegKey.LastEQ, "Broken")
             NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
             Exit Sub
         End Try
@@ -208,162 +209,162 @@ Public Class Form1
                 If Not AttackonMagatsu.Checked Then Exit Sub
                 EQName = RegKey.AttackonMagatsu
                 EQText = "Emergency broadcast! Magatsu is approaching the outlying region of Shironia!"
-                EQPic = "http://eq.arks-layer.com/img/magatsu.png"
+                EQPic = "http://arks-layer.com/eqimg/magatsu.png"
 
             Case "第一採掘基地ダーカー接近予告"
                 If Not PrimaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.PrimaryMiningBase
                 EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's primary mining base!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200c716794b.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200c716794b.png"
 
             Case "第二採掘基地ダーカー接近予告"
                 If Not SecondaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.SecondaryMiningBase
                 EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's secondary mining base!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254d12494a9.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254d12494a9.png"
 
             Case "第三採掘基地ダーカー接近予告"
                 If Not TertiaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.TertiaryMiningBase
                 EQText = "Emergency broadcast! Darkers are approaching the outlying regions of Lillipa's tertiary mining base!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254d34756a2.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254d34756a2.png"
 
             Case "旧マザーシップ　作戦予告"
                 If Not BeckoningDarkness.Checked Then Exit Sub
                 EQName = RegKey.BeckoningDarkness
                 EQText = "Emergency broadcast! A darker-infested ARKS mothership is approaching the fleet. All ARKS, prepare for large-scale combat."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254b027bcb4.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254b027bcb4.png"
 
                 'TODO: Remove "ＤＦ【敗者" but not now so it won't break if something goes wrong
             Case "アークス船団航行物体接近予告", "ＤＦ【敗者】接近予告", "ＤＦ【敗者"
                 If Not DarkFalzLoser.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzLoser
                 EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200ca52c9c0.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200ca52c9c0.png"
 
                 'TODO: Remove "ＤＦ【巨躯" but not now so it won't break if something goes wrong
             Case "アークス船団ＤＦ接近予告", "ＤＦ【巨躯", "ＤＦ【巨躯】接近予告"
                 If Not DarkFalzElder.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzElder
                 EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254b11c83c2.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254b11c83c2.png"
 
             Case "惑星ナベリウス 作戦予告"
                 If Not PlanetNaberiusEQ.Checked Then Exit Sub
                 EQName = RegKey.PlanetNaberiusEQ
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
 
             Case "森林　作戦予告"
                 EQName = "Naberius: Forest EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200c3e890f0.png"
 
             Case "凍土　作戦予告"
                 EQName = "Naberius: Tundra EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200c3e890f0.png"
 
             Case "遺跡 作戦予告"
                 EQName = "Naberius: Ruins EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200c3e890f0.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200c3e890f0.png"
 
             Case "惑星リリーパ　作戦予告"
                 If Not PlanetLillipaEQ.Checked Then Exit Sub
                 EQName = RegKey.PlanetLillipaEQ
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
 
 
             Case "火山洞窟　作戦予告"
                 EQName = "Volcanic Caves"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
 
             Case "砂漠　作戦予告"
                 EQName = "Lillipa: Desert EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
 
             Case "採掘場跡　作戦予告"
                 EQName = "Lillipa: Quarry EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254bfe5f26a.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
 
             Case "惑星アムドゥスキア　作戦予告"
                 If Not PlanetAmdusciaEQ.Checked Then Exit Sub
                 EQName = RegKey.PlanetAmdusciaEQ
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-                EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
 
             Case "浮遊大陸　作戦予告"
                 EQName = "Amduscia: F. Continent EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-                EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
 
             Case "龍祭壇　作戦予告"
                 EQName = "Amduscia: Sanctum EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-                EQPic = "http://eq.arks-layer.com/img/pso2_5425b0733daaf.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
 
             Case "インタラプトランキング予告"
                 If Not InterruptRankings.Checked Then Exit Sub
                 EQName = RegKey.InterruptRankings
                 EQText = "We will be holding Interrupt Rankings starting at the above time. Be sure to participate!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200bc303586.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200bc303586.png"
 
             Case "惑星ウォパル　作戦予告"
                 EQName = "Planet Vopar EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
 
             Case "海岸　作戦予告"
                 EQName = "Vopar: Coast EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
 
             Case "海底 作戦予告"
                 EQName = "Vopar: Seabed EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
 
             Case "浮上施設　作戦予告"
                 EQName = "Vopar: Floating Facility EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200bf904539.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
 
             Case "異常値観測宙域　一斉調査予告"
                 If Not DarkerDen.Checked Then Exit Sub
                 EQName = RegKey.DarkerDen
                 EQText = "The ARKS are preparing for a large-scale investigation of anomalous readings in deep space."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200c44e8d8b.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200c44e8d8b.png"
 
             Case "アークス船団ダーカー接近予告"
                 EQName = "ARKS Ship Urban EQ"
                 EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of the ARKS fleet!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_54200c9706b65.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54200c9706b65.png"
 
             Case "ショップエリア　ライブ予告"
                 If Not ShopAreaConcert.Checked Then Exit Sub
                 EQName = RegKey.ShopAreaConcert
                 EQText = "We're holding a concert in the Shop Area soon! We hope to see everyone there!"
-                EQPic = "http://eq.arks-layer.com/img/pso2_5425afb646808.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_5425afb646808.png"
 
             Case "地下坑道　作戦予告"
                 EQName = "Lillipa: Subterranean Tunnels EQ"
                 EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Lillipan tunnels."
-                EQPic = "http://eq.arks-layer.com/img/pso2_54254bc3ce565.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254bc3ce565.png"
 
             Case "白ノ領域　作戦予告"
                 EQName = "Harkotan: Shironia EQ"
                 EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
-                EQPic = "http://eq.arks-layer.com/img/pso2_542550515edf5.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_542550515edf5.png"
 
             Case "惑星ハルコタン 作戦予告"
                 EQName = "Planet Harkotan EQ"
                 EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
-                EQPic = "http://eq.arks-layer.com/img/pso2_542550515edf5.png"
+                EQPic = "http://arks-layer.com/eqimg/pso2_542550515edf5.png"
         End Select
 
         If EQName = RegKey.PlanetNaberiusEQ And PlanetNaberiusEQ.Checked = False Then Exit Sub
@@ -434,8 +435,8 @@ Public Class Form1
         If RegKey.GetValue(Of String)(RegKey.ShipToQuery) <> "Ship02" Then Exit Sub
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
-        Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
         Try
+            Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
             If CurrentEQOriginal = "" Then
                 RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
                 NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
@@ -448,7 +449,7 @@ Public Class Form1
 
             ShowEQ("Ship 2", tempEQTime(0) & ":" & tempEQTime(1), localEQDateIn.ToString("t") & ")", EQName)
         Catch ex As Exception
-            RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
+            RegKey.SetValue(RegKey.LastEQ, "Broken")
             NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
             Exit Sub
         End Try
