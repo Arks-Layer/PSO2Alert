@@ -12,6 +12,7 @@ Public Class Form1
 
     Public LoggingEnabled As Boolean = False
     Public DisplayMonitor As Integer = 1
+    Dim _freedomUrl As String = "http://162.243.211.123/freedom/"
 
     Private Sub Form1_Click(sender As Object, e As EventArgs) Handles Me.Click
         tmrDisplay.Enabled = False
@@ -26,7 +27,11 @@ Public Class Form1
         Dim source As String = String.Empty
         If File.Exists(Application.StartupPath & "\PSO2 Alert Updater.exe") Then File.Delete(Application.StartupPath & "\PSO2 Alert Updater.exe")
         Try
-            source = wc.DownloadString("http://162.243.211.123/freedom/PSO2Aversion.xml")
+            _freedomUrl = wc.DownloadString("http://arks-layer.com/freedom.txt")
+            If _freedomUrl.Contains("freedom") = False Then
+                _freedomUrl = "http://162.243.211.123/freedom/"
+            End If
+            source = wc.DownloadString(_freedomUrl & "PSO2Aversion.xml")
         Catch ex As Exception
             NotifyIcon1.ShowBalloonTip(7000, "", "PSO2 Alert error: Could not check for updates!", ToolTipIcon.Info)
             Thread.Sleep(7000)
@@ -65,7 +70,7 @@ Public Class Form1
                 If Not String.IsNullOrEmpty(changelog10) Then changelogtotal += vbCrLf & changelog10
                 Dim updateyesno As MsgBoxResult = MsgBox("You are using an outdated version of PSO2 Alert. You have version " & My.Application.Info.Version.ToString & " and the latest version is " & currentVersion & ". Would you like to download the latest version?" & vbCrLf & vbCrLf & "Here's the list of changes:" & vbCrLf & changelogtotal, MsgBoxStyle.YesNo)
                 If updateyesno = MsgBoxResult.Yes Then
-                    wc.DownloadFile("http://162.243.211.123/freedom/PSO2%20Alert%20Updater.exe", "PSO2 Alert Updater.exe")
+                    wc.DownloadFile(_freedomUrl & "PSO2%20Alert%20Updater.exe", "PSO2 Alert Updater.exe")
                     Process.Start(Environment.CurrentDirectory & "\PSO2 Alert Updater.exe")
                 End If
             End If
@@ -523,7 +528,7 @@ Public Class Form1
             Dim localVersion As String = My.Application.Info.Version.ToString
             Dim wc As New Net.WebClient
             wc.Proxy = Nothing
-            Dim source = wc.DownloadString("http://162.243.211.123/freedom/PSO2Aversion.xml")
+            Dim source = wc.DownloadString(_freedomUrl & "PSO2Aversion.xml")
 
             If source.Contains("<VersionHistory>") = True Then
 
@@ -558,7 +563,7 @@ Public Class Form1
                     If Not String.IsNullOrEmpty(changelog10) Then changelogtotal += vbCrLf & changelog10
                     Dim updateyesno As MsgBoxResult = MsgBox("You are using an outdated version of PSO2 Alert. You have version " & My.Application.Info.Version.ToString & " and the latest version is " & currentVersion & ". Would you like to download the latest version?" & vbCrLf & vbCrLf & "Here's the list of changes:" & vbCrLf & changelogtotal, MsgBoxStyle.YesNo)
                     If updateyesno = MsgBoxResult.Yes Then
-                        wc.DownloadFile("http://162.243.211.123/freedom/PSO2A%20Updater.exe", "PSO2 Alert Updater.exe")
+                        wc.DownloadFile(_freedomUrl & "PSO2A%20Updater.exe", "PSO2 Alert Updater.exe")
                         Process.Start(Environment.CurrentDirectory & "\PSO2 Alert Updater.exe")
                     End If
                 End If
