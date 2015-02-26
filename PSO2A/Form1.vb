@@ -304,7 +304,7 @@ Public Class Form1
                 EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
 
             Case "浮遊大陸　作戦予告"
-                EQName = "Amduscia: F. Continent EQ"
+                EQName = "Amduscia: Skyscape EQ"
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
                 EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
 

@@ -340,7 +340,7 @@ Partial Class Form1
         '
         Me.tsmReportFloatingContinent.Name = "tsmReportFloatingContinent"
         Me.tsmReportFloatingContinent.Size = New System.Drawing.Size(241, 22)
-        Me.tsmReportFloatingContinent.Text = "Amduscia (Floating Continent)"
+        Me.tsmReportFloatingContinent.Text = "Amduscia (Skyscape)"
         '
         'tsmReportFireSwirl
         '
@@ -495,7 +495,7 @@ Partial Class Form1
         '
         Me.tsmFloating.Name = "tsmFloating"
         Me.tsmFloating.Size = New System.Drawing.Size(181, 22)
-        Me.tsmFloating.Text = "Floating Continent"
+        Me.tsmFloating.Text = "Skyscape"
         '
         'tsmForest
         '
