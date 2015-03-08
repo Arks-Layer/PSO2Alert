@@ -7,10 +7,6 @@
         Dim EQDate = New DateTime(currentDate.Year, currentDate.Month, currentDate.Day, hour, minutes, 0)
         Dim localEQDateIn = TimeZoneInfo.ConvertTime(EQDate, JPTimeInfo, selectedTimeZone)
 
-        If (selectedTimeZone.SupportsDaylightSavingTime AndAlso selectedTimeZone.IsDaylightSavingTime(localEQDateIn)) Then
-            localEQDateIn = localEQDateIn.AddHours(-1)
-        End If
-
         Return localEQDateIn
     End Function
 End Class
