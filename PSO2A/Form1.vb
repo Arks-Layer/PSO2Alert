@@ -208,6 +208,7 @@ Public Class Form1
     Public Sub ShowEQ(ByRef Ship As String, JPTime As String, LocalTime As String, EQName As String)
         Dim EQText As String = ""
         Dim EQPic As String = ""
+        EQName = EQName.Replace(vbLf, "")
         Select Case EQName
 
             Case "『禍津』出現予告"
