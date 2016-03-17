@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("A Desktop EQ Notification System!")> 
 <Assembly: AssemblyCompany("Arks-Layer")> 
 <Assembly: AssemblyProduct("")> 
-<Assembly: AssemblyCopyright("Copyright Arks-Layer ©  2014")> 
+<Assembly: AssemblyCopyright("Copyright Arks-Layer ©  2015")> 
 <Assembly: AssemblyTrademark("")> 
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
@@ -29,5 +29,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("2.0.1.9")> 
-<Assembly: AssemblyFileVersion("2.0.1.9")> 
+<Assembly: AssemblyVersion("2.0.2.0")> 
+<Assembly: AssemblyFileVersion("2.0.2.0")> 

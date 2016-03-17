@@ -1,4 +1,13 @@
-﻿Imports System.IO
+﻿'------------------------------------------------------------------------------
+' PSO2 Alert - A Desktop EQ Notification System for PSO2.
+' Thanks for taking a look at this code.
+' Feel free to submit bugfixes/improvements to 
+' https://github.com/Arks-Layer/PSO2Alert/
+' 
+' Take care, and have fun in everything you do. - AIDA
+' Program uses the GNU GENERAL PUBLIC LICENSE
+'------------------------------------------------------------------------------
+Imports System.IO
 Imports System.Net
 Imports System.Text
 Imports System.Text.RegularExpressions
@@ -82,7 +91,7 @@ Public Class Form1
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
         Try
-            Dim CurrentEQOriginal As String = download.DownloadString(_freedomUrl & "pso2eq.txt")
+            Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
 
             If CurrentEQOriginal = "" Then
                 RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
@@ -112,7 +121,7 @@ Public Class Form1
             NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)
             Exit Sub
         End Try
-        RegKey.SetValue(RegKey.LastEQ, download.DownloadString(_freedomUrl & "pso2eq.txt"))
+        RegKey.SetValue(RegKey.LastEQ, download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt"))
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -167,7 +176,7 @@ Public Class Form1
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
         Try
-            Dim CurrentEQOriginal As String = download.DownloadString(_freedomUrl & "pso2eq.txt")
+            Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
             If RegKey.GetValue(Of String)(RegKey.LastEQ) = CurrentEQOriginal Then Exit Sub
 
             If CurrentEQOriginal = "" Then
@@ -247,6 +256,12 @@ Public Class Form1
                 EQName = RegKey.DarkFalzLoser
                 EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
                 EQPic = "http://arks-layer.com/eqimg/pso2_54200ca52c9c0.png"
+
+            Case "ＤＦ【巨躯】【敗者】接近予告"
+                If Not DarkFalzElder.Checked Then Exit Sub
+                EQName = RegKey.DarkFalzBoth
+                EQText = "Dark Falz Elder is approaching the ARKS fleet, along with an infested former mothership containing a Dark Falz Loser signature!"
+                EQPic = "http://arks-layer.com/eqimg/pso2_54254b11c83c2.png"
 
                 'TODO: Remove "ＤＦ【巨躯" but not now so it won't break if something goes wrong
             Case "アークス船団ＤＦ接近予告", "ＤＦ【巨躯", "ＤＦ【巨躯】接近予告"
@@ -442,7 +457,7 @@ Public Class Form1
 
         Dim download As New WebClient With {.Encoding = Encoding.UTF8}
         Try
-            Dim CurrentEQOriginal As String = download.DownloadString(_freedomUrl & "pso2eq.txt")
+            Dim CurrentEQOriginal As String = download.DownloadString("http://acf.me.uk/Public/PSO2EQ/pso2eq.txt")
             If CurrentEQOriginal = "" Then
                 RegKey.SetValue(RegKey.LastEQ, CurrentEQOriginal)
                 NotifyIcon1.ShowBalloonTip(5000, "", "Looks like something is wrong with EQ announcements. It'll be fixed soon!", ToolTipIcon.Error)

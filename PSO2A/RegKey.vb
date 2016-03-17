@@ -4,6 +4,7 @@ Public Class RegKey
     Public Const BeachWars2 = "Beach Wars 2"
     Public Const BeckoningDarkness = "Beckoning Darkness"
     Public Const DarkFalzElder = "Dark Falz Elder"
+    Public Const DarkFalzBoth = "A Profound Invasion"
     Public Const DarkFalzLoser = "Dark Falz Loser"
     Public Const DarkerDen = "Darker Den"
     Public Const InterruptRankings = "Interrupt Rankings"
