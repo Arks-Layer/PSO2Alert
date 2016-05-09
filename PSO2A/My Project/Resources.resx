@@ -118,7 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="magatsu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\magatsu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pop_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pop up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54200bc303586" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54200bc303586.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54200bf904539" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54200bf904539.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54200c3e890f0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54200c3e890f0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54200c44e8d8b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54200c44e8d8b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54200c716794b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54200c716794b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54200c9706b65" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54200c9706b65.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54200ca52c9c0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54200ca52c9c0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54254b027bcb4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54254b027bcb4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54254b11c83c2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54254b11c83c2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54254bc3ce565" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54254bc3ce565.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54254bfe5f26a" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54254bfe5f26a.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54254d12494a9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54254d12494a9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_54254d34756a2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_54254d34756a2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_542550515edf5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_542550515edf5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_5425afb646808" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_5425afb646808.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pso2_5425b0733daaf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pso2_5425b0733daaf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

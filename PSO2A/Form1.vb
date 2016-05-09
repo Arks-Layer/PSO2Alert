@@ -142,6 +142,8 @@ Public Class Form1
         If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.UrbanEQ)) Then UrbanEQ.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.UrbanEQ))
         If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.ThePitchBlackProvince)) Then ThePitchBlackProvince.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.ThePitchBlackProvince))
         If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.AttackonMagatsu)) Then AttackOnMagatsu.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.AttackonMagatsu))
+        If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.ProfoundDarkness)) Then ProfoundDarkness.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.ProfoundDarkness))
+        If Not String.IsNullOrEmpty(RegKey.GetValue(Of String)(RegKey.MiningBaseDemise)) Then MiningBaseDemise.Checked = Convert.ToBoolean(RegKey.GetValue(Of String)(RegKey.MiningBaseDemise))
 
         'Uncomment to continue on multi-monitor support
         'Dim numberofmonitors As Integer = Screen.AllScreens.Length
@@ -224,168 +226,187 @@ Public Class Form1
                 If Not AttackOnMagatsu.Checked Then Exit Sub
                 EQName = RegKey.AttackonMagatsu
                 EQText = "Emergency broadcast! Magatsu is approaching the outlying region of Shironia!"
-                EQPic = "http://arks-layer.com/eqimg/magatsu.png"
+                picEQImage.Image = My.Resources.magatsu
 
             Case "第一採掘基地ダーカー接近予告"
                 If Not PrimaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.PrimaryMiningBase
-                EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's primary mining base!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200c716794b.png"
+                EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions Of Lillipa's primary mining base!"
+                picEQImage.Image = My.Resources.pso2_54200c716794b
 
             Case "第二採掘基地ダーカー接近予告"
                 If Not SecondaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.SecondaryMiningBase
-                EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of Lillipa's secondary mining base!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254d12494a9.png"
+                EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions Of Lillipa's secondary mining base!"
+                picEQImage.Image = My.Resources.pso2_54254d12494a9
 
             Case "第三採掘基地ダーカー接近予告"
                 If Not TertiaryMiningBase.Checked Then Exit Sub
                 EQName = RegKey.TertiaryMiningBase
-                EQText = "Emergency broadcast! Darkers are approaching the outlying regions of Lillipa's tertiary mining base!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254d34756a2.png"
+                EQText = "Emergency broadcast! Darkers are approaching the outlying regions Of Lillipa's tertiary mining base!"
+                picEQImage.Image = My.Resources.pso2_54254d34756a2
 
             Case "旧マザーシップ　作戦予告"
                 If Not BeckoningDarkness.Checked Then Exit Sub
                 EQName = RegKey.BeckoningDarkness
-                EQText = "Emergency broadcast! A darker-infested ARKS mothership is approaching the fleet. All ARKS, prepare for large-scale combat."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254b027bcb4.png"
+                EQText = "Emergency broadcast! A darker-infested ARKS mothership Is approaching the fleet. All ARKS, prepare For large-scale combat."
+                picEQImage.Image = My.Resources.pso2_54254b027bcb4
 
                 'TODO: Remove "ＤＦ【敗者" but not now so it won't break if something goes wrong
             Case "アークス船団航行物体接近予告", "ＤＦ【敗者】接近予告", "ＤＦ【敗者"
                 If Not DarkFalzLoser.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzLoser
                 EQText = "Emergency broadcast! Our readings suggest Dark Falz Loser is approaching, along with an infested former mothership."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200ca52c9c0.png"
+                picEQImage.Image = My.Resources.pso2_54200ca52c9c0
 
             Case "ＤＦ【巨躯】【敗者】接近予告"
                 If Not DarkFalzElder.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzBoth
-                EQText = "Dark Falz Elder is approaching the ARKS fleet, along with an infested former mothership containing a Dark Falz Loser signature!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254b11c83c2.png"
+                EQText = "Dark Falz Elder Is approaching the ARKS fleet, along With an infested former mothership containing a Dark Falz Loser signature!"
+                picEQImage.Image = My.Resources.pso2_54254b11c83c2
 
                 'TODO: Remove "ＤＦ【巨躯" but not now so it won't break if something goes wrong
             Case "アークス船団ＤＦ接近予告", "ＤＦ【巨躯", "ＤＦ【巨躯】接近予告"
                 If Not DarkFalzElder.Checked Then Exit Sub
                 EQName = RegKey.DarkFalzElder
                 EQText = "Emergency broadcast! Dark Falz Elder is approaching the outlying regions of the ARKS fleet!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254b11c83c2.png"
+                picEQImage.Image = My.Resources.pso2_54254b11c83c2
 
             Case "惑星ナベリウス 作戦予告"
                 If Not PlanetNaberiusEQ.Checked Then Exit Sub
                 EQName = RegKey.PlanetNaberiusEQ
-                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
+                EQText = "All ARKS are instructed To prepare For a large-scale suppression operation On Naberius."
+                picEQImage.Image = My.Resources.pso2_54254bfe5f26a
 
             Case "森林　作戦予告"
-                EQName = "Naberius: Forest EQ"
+                EQName = RegKey.NaberiusForest
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200c3e890f0.png"
+                picEQImage.Image = My.Resources.pso2_54200c3e890f0
 
             Case "凍土　作戦予告"
-                EQName = "Naberius: Tundra EQ"
+                EQName = RegKey.NaberiusTundra
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200c3e890f0.png"
+                picEQImage.Image = My.Resources.pso2_54200c3e890f0
 
             Case "遺跡 作戦予告"
-                EQName = "Naberius: Ruins EQ"
+                EQName = RegKey.NaberiusRuins
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Naberius."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200c3e890f0.png"
+                picEQImage.Image = My.Resources.pso2_54200c3e890f0
 
             Case "惑星リリーパ　作戦予告"
                 If Not PlanetLillipaEQ.Checked Then Exit Sub
                 EQName = RegKey.PlanetLillipaEQ
-                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
-
+                EQText = "All ARKS are instructed To prepare For a large-scale suppression operation On Lillipa."
+                picEQImage.Image = My.Resources.pso2_54254bfe5f26a
 
             Case "火山洞窟　作戦予告"
-                EQName = "Volcanic Caves"
+                EQName = RegKey.VolcanicCaves
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
+                picEQImage.Image = My.Resources.pso2_54254bfe5f26a
 
             Case "砂漠　作戦予告"
-                EQName = "Lillipa: Desert EQ"
+                EQName = RegKey.LillipaDesert
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
+                picEQImage.Image = My.Resources.pso2_54254bfe5f26a
 
             Case "採掘場跡　作戦予告"
-                EQName = "Lillipa: Quarry EQ"
+                EQName = RegKey.LillipaQuarry
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Lillipa."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254bfe5f26a.png"
+                picEQImage.Image = My.Resources.pso2_54254bfe5f26a
 
             Case "惑星アムドゥスキア　作戦予告"
                 If Not PlanetAmdusciaEQ.Checked Then Exit Sub
                 EQName = RegKey.PlanetAmdusciaEQ
-                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-                EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
+                EQText = "All ARKS are instructed To prepare For a large-scale suppression operation On Amduscia."
+                picEQImage.Image = My.Resources.pso2_5425b0733daaf
 
             Case "浮遊大陸　作戦予告"
-                EQName = "Amduscia: Skyscape EQ"
+                EQName = RegKey.AmdusciaSkyscape
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-                EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
+                picEQImage.Image = My.Resources.pso2_5425b0733daaf
 
             Case "龍祭壇　作戦予告"
-                EQName = "Amduscia: Sanctum EQ"
+                EQName = RegKey.AmdusciaSanctum
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Amduscia."
-                EQPic = "http://arks-layer.com/eqimg/pso2_5425b0733daaf.png"
+                picEQImage.Image = My.Resources.pso2_5425b0733daaf
 
             Case "インタラプトランキング予告"
                 If Not InterruptRankings.Checked Then Exit Sub
                 EQName = RegKey.InterruptRankings
                 EQText = "We will be holding Interrupt Rankings starting at the above time. Be sure to participate!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200bc303586.png"
+                picEQImage.Image = My.Resources.pso2_54200bc303586
 
             Case "惑星ウォパル　作戦予告"
-                EQName = "Planet Vopar EQ"
-                EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
+                EQName = RegKey.PlanetVopar
+                EQText = "All ARKS are instructed To prepare For a large-scale suppression operation On Vopar."
+                picEQImage.Image = My.Resources.pso2_54200bf904539
 
             Case "海岸　作戦予告"
-                EQName = "Vopar: Coast EQ"
+                EQName = RegKey.VoparCoast
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
+                picEQImage.Image = My.Resources.pso2_54200bf904539
 
             Case "海底 作戦予告"
-                EQName = "Vopar: Seabed EQ"
+                EQName = RegKey.VoparSeabed
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
+                picEQImage.Image = My.Resources.pso2_54200bf904539
 
             Case "浮上施設　作戦予告"
-                EQName = "Vopar: Floating Facility EQ"
+                EQName = RegKey.VoparFloatingFacility
                 EQText = "All ARKS are instructed to prepare for a large-scale suppression operation on Vopar."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200bf904539.png"
+                picEQImage.Image = My.Resources.pso2_54200bf904539
 
             Case "異常値観測宙域　一斉調査予告"
                 If Not DarkerDen.Checked Then Exit Sub
                 EQName = RegKey.DarkerDen
-                EQText = "The ARKS are preparing for a large-scale investigation of anomalous readings in deep space."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200c44e8d8b.png"
+                EQText = "The ARKS are preparing For a large-scale investigation Of anomalous readings In deep space."
+                picEQImage.Image = My.Resources.pso2_54200c44e8d8b
 
             Case "アークス船団ダーカー接近予告"
-                EQName = "ARKS Ship Urban EQ"
+                EQName = RegKey.ARKSShipUrban
                 EQText = "Emergency broadcast! Numerous Darkers are approaching the outlying regions of the ARKS fleet!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_54200c9706b65.png"
+                picEQImage.Image = My.Resources.pso2_54200c9706b65
 
             Case "ショップエリア　ライブ予告"
                 If Not ShopAreaConcert.Checked Then Exit Sub
                 EQName = RegKey.ShopAreaConcert
-                EQText = "We're holding a concert in the Shop Area soon! We hope to see everyone there!"
-                EQPic = "http://arks-layer.com/eqimg/pso2_5425afb646808.png"
+                EQText = "We're holding a live event in the Shop Area soon! We hope to see everyone there!"
+                picEQImage.Image = My.Resources.pso2_5425afb646808
 
             Case "地下坑道　作戦予告"
-                EQName = "Lillipa: Subterranean Tunnels EQ"
+                EQName = RegKey.LillipaSubterraneanTunnels
                 EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Lillipan tunnels."
-                EQPic = "http://arks-layer.com/eqimg/pso2_54254bc3ce565.png"
+                picEQImage.Image = My.Resources.pso2_54254bc3ce565
 
             Case "白ノ領域　作戦予告"
-                EQName = "Harkotan: Shironia EQ"
+                EQName = RegKey.HarkotanShironia
                 EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
-                EQPic = "http://arks-layer.com/eqimg/pso2_542550515edf5.png"
+                picEQImage.Image = My.Resources.pso2_542550515edf5
 
             Case "惑星ハルコタン 作戦予告"
-                EQName = "Planet Harkotan EQ"
-                EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan shironia area."
-                EQPic = "http://arks-layer.com/eqimg/pso2_542550515edf5.png"
+                EQName = RegKey.PlanetHarkotan
+                EQText = "The ARKS are preparing a large-scale operation In response To enemy activity In the Harkotan shironia area."
+                picEQImage.Image = My.Resources.pso2_542550515edf5
+
+            Case "黒ノ領域　作戦予告"
+                EQName = RegKey.HarkotanKuron
+                EQText = "The ARKS are preparing a large-scale operation in response to enemy activity in the Harkotan kuron area."
+                picEQImage.Image = My.Resources.pso2_542550515edf5
+
+            Case "【深遠なる闇】接近予告"
+                If Not ProfoundDarkness.Checked Then Exit Sub
+                EQName = RegKey.ProfoundDarkness
+                EQText = "Emergency announcement! [Profound Darkness] readings are increasing in the skies of Naberius."
+                'Placeholder image!
+                picEQImage.Image = My.Resources.pso2_54200bc303586
+
+            Case "ＤＦ【若人】接近予告"
+                If Not MiningBaseDemise.Checked Then Exit Sub
+                EQName = RegKey.MiningBaseDemise
+                EQText = "Emergency broadcast! We're picking up readings of Dark Falz Apprentice on Lillipa. All ARKS operatives should prepare to engage."
+                'Placeholder image!
+                picEQImage.Image = My.Resources.pso2_54200bc303586
+
         End Select
 
         If EQName = RegKey.PlanetNaberiusEQ And PlanetNaberiusEQ.Checked = False Then Exit Sub
@@ -412,7 +433,6 @@ Public Class Form1
                 Me.Location = New Point(x, y)
             End If
 
-            picEQImage.ImageLocation = EQPic
             Application.DoEvents()
             lblEQText.Text = EQText
             lblTitle.Text = Ship & " " & EQName & " " & JPTime & "JST (" & LocalTime
@@ -669,5 +689,13 @@ Public Class Form1
 
     Private Sub AttackOnMagatsu_Click(sender As Object, e As EventArgs) Handles AttackOnMagatsu.Click
         RegKey.SetValue(RegKey.AttackonMagatsu, AttackOnMagatsu.Checked)
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ProfoundDarkness.Click
+        RegKey.SetValue(RegKey.ProfoundDarkness, ProfoundDarkness.Checked)
+    End Sub
+
+    Private Sub MiningBaseDemise_Click(sender As Object, e As EventArgs) Handles MiningBaseDemise.Click
+        RegKey.SetValue(RegKey.MiningBaseDemise, MiningBaseDemise.Checked)
     End Sub
 End Class

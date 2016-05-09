@@ -170,6 +170,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="pso2 A icon256.ico" />
+    <None Include="Resources\pso2_542550515edf5.png" />
+    <None Include="Resources\pso2_54254d34756a2.png" />
+    <None Include="Resources\pso2_54254d12494a9.png" />
+    <None Include="Resources\pso2_54254bfe5f26a.png" />
+    <None Include="Resources\pso2_54254bc3ce565.png" />
+    <None Include="Resources\pso2_54254b027bcb4.png" />
+    <None Include="Resources\pso2_54254b11c83c2.png" />
+    <None Include="Resources\pso2_54200ca52c9c0.png" />
+    <None Include="Resources\pso2_54200c716794b.png" />
+    <None Include="Resources\pso2_54200c9706b65.png" />
+    <None Include="Resources\pso2_54200c44e8d8b.png" />
+    <None Include="Resources\pso2_54200c3e890f0.png" />
+    <None Include="Resources\pso2_54200bf904539.png" />
+    <None Include="Resources\pso2_54200bc303586.png" />
+    <None Include="Resources\pso2_5425b0733daaf.png" />
+    <None Include="Resources\pso2_5425afb646808.png" />
+    <None Include="Resources\magatsu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
